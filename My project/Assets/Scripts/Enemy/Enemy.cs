@@ -5,8 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 0.4f;
-    [SerializeField] private Player player;
-    private bool isWalking;    
+    private GameObject player;
+    private bool isWalking;  
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }  
 
     private void Update()
     {
