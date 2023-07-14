@@ -261,8 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e6b6cda7a417342a45946cb27062ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  undeadGhost: {fileID: 1000013196463436, guid: fd1e1385e36ab497b8d8ee0056446768, type: 3}
-  undeadSkeleton: {fileID: 1000013211288506, guid: ce46bad6f58514808996705ba480665b, type: 3}
 --- !u!4 &374187628
 Transform:
   m_ObjectHideFlags: 0

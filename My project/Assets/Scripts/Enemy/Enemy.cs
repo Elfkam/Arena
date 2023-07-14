@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private void HandleMovement(){
         Vector2 directionToPlayer = (player.transform.position - transform.position).normalized;
         Vector3 moveDir = new Vector3(directionToPlayer.x, directionToPlayer.y, 0f);
+
         //transform.position +=  moveDir * moveSpeed * Time.deltaTime;
 
         // turn player acording to witch side he is going

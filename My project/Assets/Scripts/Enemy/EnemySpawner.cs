@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject undeadGhost;
-    [SerializeField]
-    private GameObject undeadSkeleton;
 
     void Start()
     {
-        StartCoroutine(spawnEnemy(5, undeadGhost));
+        StartCoroutine(spawnEnemy(5, GameAssets.i.UndeadSkeleton));
     }
 
     void Update()
