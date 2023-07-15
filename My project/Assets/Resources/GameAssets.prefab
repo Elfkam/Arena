@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamagePopup: {fileID: 2012314312528434971, guid: 3a0c58bc8a41a7a46a01dec72e24e54c, type: 3}
   UndeadSkeleton: {fileID: 1000013211288506, guid: ce46bad6f58514808996705ba480665b, type: 3}
+  BasicPlayerAttack: {fileID: 8486888605527047792, guid: 79f74800f938e4240858665381bf016c, type: 3}

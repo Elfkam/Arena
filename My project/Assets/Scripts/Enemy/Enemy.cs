@@ -6,11 +6,13 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 0.4f;
     private GameObject player;
-    private bool isWalking;  
+    private bool isWalking;
+    private int Health;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Health = 10;
     }  
 
     private void Update()
@@ -37,6 +39,14 @@ public class Enemy : MonoBehaviour
         }
         transform.position += moveDir * moveSpeed * Time.deltaTime;
 
+    }
+
+    public void TakeDamage(int damage){
+        Health -= damage;
+        DamagePopup.Create(transform.position, damage, false);
+        if(Health <= 0){
+            Destroy(gameObject);
+        }
     }
 
     public bool IsWalking(){

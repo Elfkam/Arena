@@ -39,8 +39,8 @@ public class Player : MonoBehaviour
             isWalking = false;
         }
         return moveDir * moveSpeed * Time.deltaTime;
-    }
-
+    }    
+    
     public bool IsWalking(){
         return isWalking;
     }

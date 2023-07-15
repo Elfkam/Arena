@@ -26,10 +26,10 @@ public class DamagePopup : MonoBehaviour
     public void Setup(int damageAmount, bool isCriticalHit){
         textMesh.SetText(damageAmount.ToString());
         if(isCriticalHit){
-            textMesh.fontSize = 6;
+            textMesh.fontSize = 10;
             textColor = Color.yellow;
         }else{
-            textMesh.fontSize = 4;
+            textMesh.fontSize = 8;
             textColor = Color.red;
         }
         textMesh.color = textColor;
