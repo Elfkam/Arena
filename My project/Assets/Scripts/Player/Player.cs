@@ -10,8 +10,11 @@ public class Player : MonoBehaviour
     private Rigidbody2D playerRigidBody2d;
     private bool isWalking;
 
+    private int Health;
+
     private void Awake() {
         playerRigidBody2d = GetComponent<Rigidbody2D>();
+        Health = 100;
     }
     private void Update()
     {
@@ -43,5 +46,12 @@ public class Player : MonoBehaviour
     
     public bool IsWalking(){
         return isWalking;
+    }
+
+    public void TakeDamage(int damage){
+        Health -= damage;
+        if(Health <= 0){
+            // TODO: gameOver
+        }
     }
 }
