@@ -25,19 +25,19 @@ public class EnemyAnimator : MonoBehaviour
         {
             animator.SetBool(IS_WALKING, true);
         }
-        if(state == Enemy.State.Attack)
+        if(enemy.GetState() == Enemy.State.Attack)
         {
             animator.SetBool(IS_ATTACKING, true);
         }
-        if (state == Enemy.State.Death)
+        if (enemy.GetState() == Enemy.State.Death)
         {
             animator.SetBool(IS_DYING, true);
         }
-        if (state == Enemy.State.Charge)
+        if (enemy.GetState() == Enemy.State.Charge)
         {
             animator.SetBool(IS_CHARGING, true);
         }
-        if (state == Enemy.State.PrepareToCharge)
+        if (enemy.GetState() == Enemy.State.PrepareToCharge)
         {
             animator.SetBool(IS_PREPARING_TO_CHARGE, true);
         }          

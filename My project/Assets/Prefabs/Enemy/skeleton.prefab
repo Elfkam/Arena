@@ -1402,10 +1402,10 @@ GameObject:
   - component: {fileID: 4000010400446954}
   - component: {fileID: 95000013651450054}
   - component: {fileID: 210585303500611598}
-  - component: {fileID: 1069024374838822777}
   - component: {fileID: -524508062570798588}
   - component: {fileID: 7967390059494060361}
   - component: {fileID: 2393794849336456915}
+  - component: {fileID: 5284155409226347123}
   m_Layer: 3
   m_Name: skeleton
   m_TagString: Enemy
@@ -1428,7 +1428,7 @@ Transform:
   - {fileID: 4000012006155536}
   - {fileID: 4000010025914158}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95000013651450054
 Animator:
@@ -1463,19 +1463,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_SortAtRoot: 0
---- !u!114 &1069024374838822777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013211288506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108438e98c6fbcd448f366eb3a389e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0.4
 --- !u!114 &-524508062570798588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1488,7 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddad839620d2d004896c276d4c7c23b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1069024374838822777}
+  enemy: {fileID: 0}
 --- !u!70 &7967390059494060361
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1551,6 +1538,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5284155409226347123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013211288506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f6901deb6c32441a52f2889f5df83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1000013285732958
 GameObject:
   m_ObjectHideFlags: 0

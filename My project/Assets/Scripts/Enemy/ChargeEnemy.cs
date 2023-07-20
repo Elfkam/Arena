@@ -10,7 +10,7 @@ public class ChargeEnemy : Enemy
     private float prepareToCharge = 1f;
 
     private float timeToCharge = 0;
-    private void Start()
+    protected override void Start()
     {
         base.Start();
         state = State.ChasePlayer;
@@ -18,34 +18,34 @@ public class ChargeEnemy : Enemy
 
     private void Update()
     {
-        Act();
+
     }
 
-    public static ChargeEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange){
+    public static ChargeEnemy Create(Vector3 position, Transform gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange){
         Transform enemyTransform = Instantiate(gm, position, Quaternion.identity);
         ChargeEnemy enemy = enemyTransform.GetComponent<ChargeEnemy>();
         enemy.Setup(hp, attackSpeed, speed, dmg, chargeRange);
         return enemy;
     }
 
-    private void Setup(int hp, float attackSpeed, float speed, int dmg, float chargeRange){
+    private void Setup(int hp, float attackSpeed, float speed, int dmg, float chargeRangeInput){
         base.Health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;
         timeToAttack = attackSpeed;
-        chargeRange = chargeRange;
+        chargeRange = chargeRangeInput;
         timeToCharge = prepareToCharge;
     }
 
-    private override void Act() {
+    protected override void Act() {
         switch (state)
         {
             case State.ChasePlayer:
                 if(InChargeRange()){
                     state = State.PrepareToCharge;
                 }else{
-                    MoveToPlayer(movementSpeed);
+                    MoveToPlayer();
                 }                       
                 break;
             case State.Attack:
@@ -62,6 +62,7 @@ public class ChargeEnemy : Enemy
 
     private bool InChargeRange(){
         // TODO: podle chargeRange -> pokud je hrac v nejakem rozmezi tak se chargne -> aby se nechargoval porad (mozna muze jen jednou)
+        return true;
     }
 
     private void Charge(){

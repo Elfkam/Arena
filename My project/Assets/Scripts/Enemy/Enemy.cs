@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     protected float moveSpeed;
-    protected GameObject player;
+    protected Player player;
     protected int Health;
 
     protected State state;
@@ -24,9 +24,9 @@ public abstract class Enemy : MonoBehaviour
         PrepareToCharge,
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }  
 
     private void Update()
@@ -49,7 +49,7 @@ public abstract class Enemy : MonoBehaviour
         transform.position += moveDir * moveSpeed * Time.deltaTime;
     }
 
-    protected void TakeDamage(int damage){
+    public void TakeDamage(int damage){
         Health -= damage;
         DamagePopup.Create(transform.position, damage, false);
         if(Health <= 0){

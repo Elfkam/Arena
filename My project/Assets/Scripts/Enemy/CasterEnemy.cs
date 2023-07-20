@@ -6,7 +6,7 @@ public class CasterEnemy : Enemy
 {
     private float attackRange;
     private float timeToAttack = 0;
-    private void Start()
+    protected override void Start()
     {
         base.Start();
         state = State.ChasePlayer;
@@ -17,23 +17,23 @@ public class CasterEnemy : Enemy
         Act();
     }
 
-    public static CasterEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float attackRange){
+    public static CasterEnemy Create(Vector3 position, Transform gm, int hp, float attackSpeed, float speed, int dmg, float attackRange){
         Transform enemyTransform = Instantiate(gm, position, Quaternion.identity);
         CasterEnemy enemy = enemyTransform.GetComponent<CasterEnemy>();
         enemy.Setup(hp, attackSpeed, speed, dmg, attackRange);
         return enemy;
     }
 
-    private void Setup(int hp, float attackSpeed, float speed, int dmg, float attackRange){
+    private void Setup(int hp, float attackSpeed, float speed, int dmg, float attackRangeInput){
         base.Health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;
         timeToAttack = attackSpeed;
-        attackRange = attackRange;
+        attackRange = attackRangeInput;
     }
 
-    private override void Act() {
+    protected override void Act() {
         switch (state)
         {
             case State.ChasePlayer:
@@ -43,7 +43,7 @@ public class CasterEnemy : Enemy
                 }
                 else
                 {
-                    MoveToPlayer(movementSpeed); 
+                    MoveToPlayer(); 
                 }
                 break;
             case State.Attack:
@@ -58,6 +58,7 @@ public class CasterEnemy : Enemy
 
     private bool InAttackRange(){
         // TODO: podle distance
+        return true;
     } 
        
     private void Attack() {

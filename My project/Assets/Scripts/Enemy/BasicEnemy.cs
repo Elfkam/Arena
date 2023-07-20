@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicEnemy : Enemy
 {
     private float timeToAttack = 0;
-    private void Start()
+    protected override void Start()
     {
         base.Start();
         state = State.ChasePlayer;
@@ -16,7 +16,7 @@ public class BasicEnemy : Enemy
         Act();
     }
 
-    public static BasicEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg){
+    public static BasicEnemy Create(Vector3 position, Transform gm, int hp, float attackSpeed, float speed, int dmg){
         Transform enemyTransform = Instantiate(gm, position, Quaternion.identity);
         BasicEnemy enemy = enemyTransform.GetComponent<BasicEnemy>();
         enemy.Setup(hp, attackSpeed, speed, dmg);
@@ -31,11 +31,11 @@ public class BasicEnemy : Enemy
         timeToAttack = attackSpeed;
     }
 
-    private override void Act() {
+    protected override void Act() {
         switch (state)
         {
             case State.ChasePlayer:
-                MoveToPlayer(movementSpeed);            
+                MoveToPlayer();            
                 break;
             case State.Attack:
                 Attack();
