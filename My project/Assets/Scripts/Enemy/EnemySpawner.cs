@@ -7,42 +7,37 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject player;
     private float distanceFromPlayer = 5f;
-    private float timeUntilSpawn = 2f;
-
+    private float timeUntilSpawn = 5f;
     private float currTimeUntilSpawn;
-
     private int spawnCount;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(spawnEnemy(5, GameAssets.i.UndeadSkeleton));
+
         currTimeUntilSpawn = timeUntilSpawn;
-        spawnCount = 12; // TODO: increase with time
+        spawnCount = 4; // TODO: increase with time
     }
 
     void Update()
     {
-        
+        SpawnEnemies();
     }
-
+/*
+    StartCoroutine(spawnEnemy(5, GameAssets.i.UndeadSkeleton));
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
         GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6), 0), Quaternion.identity);
         StartCoroutine(spawnEnemy(interval, enemy));
     }
-
+*/
     private void SpawnEnemies(){
         currTimeUntilSpawn -= Time.deltaTime;
         if(currTimeUntilSpawn < 0){
             SpawnEnemiesAroundPlayer(spawnCount);
             currTimeUntilSpawn = timeUntilSpawn;
         }
-    }    
-
-    private void SpawnEnemyOnce(GameObject enemy, Vector3 pos){
-        Instantiate(enemy, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6), 0), Quaternion.identity);
     }
 
     private void SpawnEnemiesAroundPlayer(int count){
@@ -50,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < count; i++){
             float ang = i * (360/count);
             Vector3 pos = RandomCircle(center, distanceFromPlayer, ang);
-            SpawnEnemyOnce(GameAssets.i.UndeadSkeleton, pos);
+            SpawnUndeadSkeleton(pos);
         }
     }
 
@@ -61,4 +56,27 @@ public class EnemySpawner : MonoBehaviour
         pos.z = center.z;
         return pos;
     }
+
+    private void diffTable(){
+        // 0s  SpawnUndeadSkeleton
+        // 20s pridat SpawnUndeadGhost
+        // 40s pridat SpawnUndeadVampire
+        // idk vyresit podle sily spellu
+    }
+
+    private void SpawnUndeadSkeleton(Vector3 pos){
+        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 10, 2f, 2f, 5);
+    } 
+    private void SpawnUndeadZombie(Vector3 pos){
+        BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 20, 2f, 1f, 10);
+    }
+    private void SpawnUndeadGhost(Vector3 pos){
+        CasterEnemy.Create(pos, GameAssets.i.UndeadGhost, 10, 3f, 2f, 5, 5f);
+    }
+    private void SpawnUndeadVampire(Vector3 pos){
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 3f, 2f, 10, 5f);
+    } 
+    private void SpawnUndeadBlackKnight(Vector3 pos){
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 2f, 15, 5f);
+    } 
 }

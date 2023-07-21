@@ -16,8 +16,8 @@ public class BasicEnemy : Enemy
         Act();
     }
 
-    public static BasicEnemy Create(Vector3 position, Transform gm, int hp, float attackSpeed, float speed, int dmg){
-        Transform enemyTransform = Instantiate(gm, position, Quaternion.identity);
+    public static BasicEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg){
+        Transform enemyTransform = Instantiate(gm, position, Quaternion.identity).transform;
         BasicEnemy enemy = enemyTransform.GetComponent<BasicEnemy>();
         enemy.Setup(hp, attackSpeed, speed, dmg);
         return enemy;

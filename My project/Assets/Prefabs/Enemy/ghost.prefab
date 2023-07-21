@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddad839620d2d004896c276d4c7c23b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 4523394257200759185}
 --- !u!70 &7827064037342497273
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

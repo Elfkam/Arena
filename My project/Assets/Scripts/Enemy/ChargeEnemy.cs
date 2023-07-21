@@ -21,8 +21,8 @@ public class ChargeEnemy : Enemy
 
     }
 
-    public static ChargeEnemy Create(Vector3 position, Transform gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange){
-        Transform enemyTransform = Instantiate(gm, position, Quaternion.identity);
+    public static ChargeEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange){
+        Transform enemyTransform = Instantiate(gm, position, Quaternion.identity).transform;
         ChargeEnemy enemy = enemyTransform.GetComponent<ChargeEnemy>();
         enemy.Setup(hp, attackSpeed, speed, dmg, chargeRange);
         return enemy;

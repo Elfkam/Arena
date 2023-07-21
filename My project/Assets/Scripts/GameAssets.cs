@@ -15,6 +15,10 @@ public class GameAssets : MonoBehaviour
 
     public Transform DamagePopup;
     public GameObject UndeadSkeleton;
+    public GameObject UndeadGhost;
+    public GameObject UndeadZombie;
+    public GameObject UndeadVampire;
+    public GameObject UndeadBlackKnight;
     public GameObject BasicPlayerAttack;
     public GameObject EnemyAttack;
 }

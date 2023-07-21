@@ -2046,6 +2046,8 @@ GameObject:
   - component: {fileID: 210978606734003456}
   - component: {fileID: 3987875919806302854}
   - component: {fileID: 8350715392100556862}
+  - component: {fileID: -711313314704305672}
+  - component: {fileID: -1099488830630566054}
   m_Layer: 3
   m_Name: vampires
   m_TagString: Enemy
@@ -2165,6 +2167,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-711313314704305672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013612721936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e10ce2132a6b942a505676d16b3866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1099488830630566054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013612721936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddad839620d2d004896c276d4c7c23b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: -711313314704305672}
 --- !u!1 &1000013686281754
 GameObject:
   m_ObjectHideFlags: 0
