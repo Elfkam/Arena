@@ -70,7 +70,7 @@ public class CasterEnemy : Enemy
     }
 
     private void spawnProjectile(){
-
+        EnemyAttack.Create(this.transform.position);
     }
     
 }

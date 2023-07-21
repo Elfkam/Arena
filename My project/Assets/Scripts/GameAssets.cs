@@ -16,4 +16,5 @@ public class GameAssets : MonoBehaviour
     public Transform DamagePopup;
     public GameObject UndeadSkeleton;
     public GameObject BasicPlayerAttack;
+    public GameObject EnemyAttack;
 }

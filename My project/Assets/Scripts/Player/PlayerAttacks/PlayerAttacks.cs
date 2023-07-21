@@ -11,7 +11,7 @@ public class PlayerAttacks : MonoBehaviour
     private GameObject player;
     private GameObject[] arrayEnemies;
 
-    protected Vector3 enemyPossition;
+    protected Vector3 enemyPosition;
     protected float speed;    
     protected int damage;
     protected virtual void Start()

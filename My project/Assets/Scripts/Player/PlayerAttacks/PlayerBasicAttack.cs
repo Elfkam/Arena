@@ -13,11 +13,11 @@ public class PlayerBasicAttack : PlayerAttacks
     protected override void Start()
     {
         base.Start();
-        enemyPossition = GetPossNearestEnemyToPlayer();
+        enemyPosition = GetPossNearestEnemyToPlayer();
         speed = 1f;
         damage = 5;
         distance = 10f;
-        directionToEnemy = (enemyPossition - transform.position).normalized;
+        directionToEnemy = (enemyPosition - transform.position).normalized;
         startPossition = transform.position;
     }
 
