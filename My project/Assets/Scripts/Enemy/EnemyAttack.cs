@@ -9,12 +9,15 @@ public class EnemyAttack : MonoBehaviour
     private int damage;
     private float distance;
     private Vector3 startPosition;
+    private Vector3 directionToPlayer;
     private void Start()
     {
         playerStartPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        speed = 2f;
+        speed = 1.5f;
         damage = 10;
         distance = 5f;
+        directionToPlayer = (playerStartPos - transform.position).normalized;
+        startPosition = transform.position;
     }
     private void Update()
     {
@@ -25,17 +28,11 @@ public class EnemyAttack : MonoBehaviour
     public static EnemyAttack Create(Vector3 position){
         Transform enemyAttackTransform = Instantiate(GameAssets.i.EnemyAttack.transform, position, Quaternion.identity);
         EnemyAttack enemyAttack = enemyAttackTransform.GetComponent<EnemyAttack>();
-        enemyAttack.Setup(position);
         return enemyAttack;
     }
 
-    private void Setup(Vector3 position){
-        startPosition = position;
-    }
-
-
     private void HandleMovement(){        
-        Vector3 moveDir = new Vector3(playerStartPos.x, playerStartPos.y, 0f);        
+        Vector3 moveDir = new Vector3(directionToPlayer.x, directionToPlayer.y, 0f);        
         transform.position += moveDir * speed * Time.deltaTime;
     }
 

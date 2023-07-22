@@ -17,7 +17,7 @@ public class HandlePlayerAttacks : MonoBehaviour
     void Update()
     {
         arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Attack();
+       // Attack();
     }
 
     private void Attack(){

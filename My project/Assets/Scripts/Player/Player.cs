@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] private Joystick joystick;
-    [SerializeField] private float moveSpeed = 0.4f;
+    [SerializeField] private float moveSpeed;
     private Rigidbody2D playerRigidBody2d;
     private bool isWalking;
 
@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage){
         Health -= damage;
+        Debug.Log(Health);
         if(Health <= 0){
             // TODO: gameOver
         }

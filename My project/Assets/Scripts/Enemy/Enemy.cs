@@ -15,6 +15,7 @@ public abstract class Enemy : MonoBehaviour
     protected int dmg;
 
     protected abstract void Act();
+    private Animator animator;
 
     public enum State{
         ChasePlayer,
@@ -27,11 +28,11 @@ public abstract class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        animator = transform.GetComponent<Animator>();
     }  
 
     private void Update()
     {
-       Act();
     }
 
     protected void MoveToPlayer(){
@@ -54,7 +55,16 @@ public abstract class Enemy : MonoBehaviour
         DamagePopup.Create(transform.position, damage, false);
         if(Health <= 0){
             Destroy(gameObject);
+            // state = State.Death;
+            // StartCoroutine(Die());
         }
+    }
+
+    private IEnumerator Die()
+    {
+        float time = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);       
     }
 
     public State GetState(){

@@ -43,21 +43,26 @@ public class CasterEnemy : Enemy
                 }
                 else
                 {
-                    MoveToPlayer(); 
+                    MoveToPlayer();
+                    timeToAttack = attackSpeed;
                 }
                 break;
             case State.Attack:
-                Attack();
+
                 if (!InAttackRange())
                 {
                     state = State.ChasePlayer;
+                }
+                else
+                {
+                    Attack();
                 }
                 break;
         }
     }
 
     private bool InAttackRange(){
-        // TODO: podle distance
+        if(Vector3.Distance(transform.position, player.transform.position) > attackRange) return false;
         return true;
     } 
        

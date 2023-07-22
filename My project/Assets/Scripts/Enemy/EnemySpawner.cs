@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     private GameObject player;
-    private float distanceFromPlayer = 5f;
+    private float distanceFromPlayer = 10f;
     private float timeUntilSpawn = 5f;
     private float currTimeUntilSpawn;
     private int spawnCount;
@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         currTimeUntilSpawn = timeUntilSpawn;
-        spawnCount = 4; // TODO: increase with time
+        spawnCount = 1; // TODO: increase with time
     }
 
     void Update()
@@ -36,7 +36,9 @@ public class EnemySpawner : MonoBehaviour
         currTimeUntilSpawn -= Time.deltaTime;
         if(currTimeUntilSpawn < 0){
             SpawnEnemiesAroundPlayer(spawnCount);
+            timeUntilSpawn = 100f;
             currTimeUntilSpawn = timeUntilSpawn;
+            
         }
     }
 
@@ -45,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < count; i++){
             float ang = i * (360/count);
             Vector3 pos = RandomCircle(center, distanceFromPlayer, ang);
-            SpawnUndeadSkeleton(pos);
+            SpawnUndeadVampire(pos);
         }
     }
 
@@ -65,16 +67,16 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void SpawnUndeadSkeleton(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 10, 2f, 2f, 5);
+        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 10, 2f, 2f, 5); // attackSpeed is based on animations
     } 
     private void SpawnUndeadZombie(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 20, 2f, 1f, 10);
+        BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 20, 1.75f, 0.5f, 10);
     }
     private void SpawnUndeadGhost(Vector3 pos){
-        CasterEnemy.Create(pos, GameAssets.i.UndeadGhost, 10, 3f, 2f, 5, 5f);
+        CasterEnemy.Create(pos, GameAssets.i.UndeadGhost, 10, 1.75f, 2f, 5, 3f);
     }
     private void SpawnUndeadVampire(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 3f, 2f, 10, 5f);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 1.6f, 1.5f, 10, 3f);
     } 
     private void SpawnUndeadBlackKnight(Vector3 pos){
         ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 2f, 15, 5f);

@@ -6,10 +6,13 @@ public class ChargeEnemy : Enemy
 {
     private float chargeRange;
     private float timeToAttack = 0;
-
-    private float prepareToCharge = 1f;
-
+    private float prepareToCharge = 2f;
     private float timeToCharge = 0;
+    private bool alreadyCharged = false;
+    private Vector3 directionToPlayer = Vector3.zero;
+    private Vector3 chargeStartPos = Vector3.zero;
+    private float chargeSpeed = 5f;
+    private float normalSpeed;
     protected override void Start()
     {
         base.Start();
@@ -18,7 +21,7 @@ public class ChargeEnemy : Enemy
 
     private void Update()
     {
-
+        Act();
     }
 
     public static ChargeEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange){
@@ -36,6 +39,7 @@ public class ChargeEnemy : Enemy
         timeToAttack = attackSpeed;
         chargeRange = chargeRangeInput;
         timeToCharge = prepareToCharge;
+        normalSpeed = speed;
     }
 
     protected override void Act() {
@@ -55,23 +59,39 @@ public class ChargeEnemy : Enemy
                 PrepareToCharge();
                 break;
             case State.Charge:
-                Charge();
+                HandleChargeMovement();
                 break;
         }
     }
 
     private bool InChargeRange(){
-        // TODO: podle chargeRange -> pokud je hrac v nejakem rozmezi tak se chargne -> aby se nechargoval porad (mozna muze jen jednou)
+        if(alreadyCharged) return false;
+        if(Vector3.Distance(transform.position, player.transform.position) > chargeRange) return false;
         return true;
     }
 
-    private void Charge(){
-        // zrychleni az 3x a bezi tam kde hrac byl!!
+    private void HandleChargeMovement(){        
+        Vector3 moveDir = new Vector3(directionToPlayer.x, directionToPlayer.y, 0f);
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        if(Vector3.Distance(transform.position, chargeStartPos) > chargeRange + chargeRange / 2){
+            state = State.ChasePlayer;
+            moveSpeed = normalSpeed;
+        }
     }
 
     private void PrepareToCharge() {
+        if(chargeStartPos == Vector3.zero){
+            directionToPlayer = (player.transform.position - transform.position).normalized;
+            chargeStartPos = transform.position;
+        }
+		/* foreach(SpriteRenderer c in gameObject.GetComponentsInChildren<SpriteRenderer>()) {
+			c.color = new Color(122, 95, 48);
+        } */
+		
         timeToCharge -= Time.deltaTime;
-        if(timeToCharge < 0){    
+        if(timeToCharge < 0){
+            moveSpeed = chargeSpeed;
+            alreadyCharged = true;    
             state = State.Charge;
         }
     }
@@ -85,8 +105,9 @@ public class ChargeEnemy : Enemy
     }
     private void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
-        if(gm.CompareTag("Player")){            
-            state = State.Attack;
+        if(gm.CompareTag("Player")){
+            if(state != State.Charge) state = State.Attack;
+            else player.TakeDamage(dmg); // deal dmg to player during charge
         }        
     }
     private void OnTriggerExit2D(Collider2D collider2D) {     
