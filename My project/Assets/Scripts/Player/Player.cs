@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Joystick joystick;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private HealthBar healthBar;
     private Rigidbody2D playerRigidBody2d;
     private bool isWalking;
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     private void Awake() {
         playerRigidBody2d = GetComponent<Rigidbody2D>();
         Health = 100;
+        healthBar.SetMaxHealth(Health);
     }
     private void Update()
     {
@@ -50,7 +52,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage){
         Health -= damage;
-        Debug.Log(Health);
+        healthBar.SetHealth(Health);
         if(Health <= 0){
             // TODO: gameOver
         }

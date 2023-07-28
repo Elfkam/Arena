@@ -52,3 +52,4 @@ MonoBehaviour:
   UndeadBlackKnight: {fileID: 1000011201877128, guid: 72954a48f9bc94edd96576c258be84e4, type: 3}
   BasicPlayerAttack: {fileID: 8486888605527047792, guid: 79f74800f938e4240858665381bf016c, type: 3}
   EnemyAttack: {fileID: 2794326711458975590, guid: 34774334ede90694d9c017ed6e27bcac, type: 3}
+  ShowXP: {fileID: 3558310243773369340, guid: 2f1f37623ed659e41b9bb17bab6676e8, type: 3}

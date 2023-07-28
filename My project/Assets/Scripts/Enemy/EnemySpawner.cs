@@ -79,6 +79,6 @@ public class EnemySpawner : MonoBehaviour
         ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 1.6f, 1.5f, 10, 3f);
     } 
     private void SpawnUndeadBlackKnight(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 2f, 15, 5f);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 2f, 20, 3f);
     } 
 }
