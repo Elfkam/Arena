@@ -16,18 +16,19 @@ public class BasicEnemy : Enemy
         Act();
     }
 
-    public static BasicEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg){
+    public static BasicEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, int xp){
         Transform enemyTransform = Instantiate(gm, position, Quaternion.identity).transform;
         BasicEnemy enemy = enemyTransform.GetComponent<BasicEnemy>();
-        enemy.Setup(hp, attackSpeed, speed, dmg);
+        enemy.Setup(hp, attackSpeed, speed, dmg, xp);
         return enemy;
     }
 
-    private void Setup(int hp, float attackSpeed, float speed, int dmg){
+    private void Setup(int hp, float attackSpeed, float speed, int dmg, int xp){
         base.Health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;
+        base.xp = xp;
         timeToAttack = attackSpeed;
     }
 

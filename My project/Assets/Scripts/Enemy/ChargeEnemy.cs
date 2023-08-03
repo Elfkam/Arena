@@ -24,18 +24,19 @@ public class ChargeEnemy : Enemy
         Act();
     }
 
-    public static ChargeEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange){
+    public static ChargeEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange, int xp){
         Transform enemyTransform = Instantiate(gm, position, Quaternion.identity).transform;
         ChargeEnemy enemy = enemyTransform.GetComponent<ChargeEnemy>();
-        enemy.Setup(hp, attackSpeed, speed, dmg, chargeRange);
+        enemy.Setup(hp, attackSpeed, speed, dmg, chargeRange, xp);
         return enemy;
     }
 
-    private void Setup(int hp, float attackSpeed, float speed, int dmg, float chargeRangeInput){
+    private void Setup(int hp, float attackSpeed, float speed, int dmg, float chargeRangeInput, int xp){
         base.Health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;
+        base.xp = xp;
         timeToAttack = attackSpeed;
         chargeRange = chargeRangeInput;
         timeToCharge = prepareToCharge;

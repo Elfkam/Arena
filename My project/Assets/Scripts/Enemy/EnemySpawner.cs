@@ -6,10 +6,11 @@ public class EnemySpawner : MonoBehaviour
 {
 
     private GameObject player;
-    private float distanceFromPlayer = 10f;
+    private float distanceFromPlayer = 5f;
     private float timeUntilSpawn = 5f;
     private float currTimeUntilSpawn;
     private int spawnCount;
+    public LineRenderer circleRenderer;
 
     void Start()
     {
@@ -17,11 +18,14 @@ public class EnemySpawner : MonoBehaviour
 
         currTimeUntilSpawn = timeUntilSpawn;
         spawnCount = 1; // TODO: increase with time
+
+        circleRenderer = transform.GetComponent<LineRenderer>();
     }
 
     void Update()
     {
         SpawnEnemies();
+        DrawCircle();
     }
 /*
     StartCoroutine(spawnEnemy(5, GameAssets.i.UndeadSkeleton));
@@ -39,6 +43,25 @@ public class EnemySpawner : MonoBehaviour
             timeUntilSpawn = 100f;
             currTimeUntilSpawn = timeUntilSpawn;
             
+        }
+    }
+
+    private void DrawCircle()
+    {
+        circleRenderer.loop = true;  // Cela ferme le cercle
+        circleRenderer.positionCount = 100;
+
+        float angle = 0f;
+        Vector3 center = player.transform.position;
+
+        for (int i = 0; i < 100; i++)
+        {
+            float x = center.x + distanceFromPlayer * Mathf.Cos(angle);
+            float y = center.y + distanceFromPlayer * Mathf.Sin(angle);
+
+            circleRenderer.SetPosition(i, new Vector3(x, y, 0f));
+
+            angle += 2f * Mathf.PI / 100;
         }
     }
 
@@ -67,18 +90,18 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void SpawnUndeadSkeleton(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 10, 2f, 2f, 5); // attackSpeed is based on animations
+        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 10, 2f, 2f, 5, 1); // attackSpeed is based on animations
     } 
     private void SpawnUndeadZombie(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 20, 1.75f, 0.5f, 10);
+        BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 20, 1.75f, 0.5f, 10, 2);
     }
     private void SpawnUndeadGhost(Vector3 pos){
-        CasterEnemy.Create(pos, GameAssets.i.UndeadGhost, 10, 1.75f, 2f, 5, 3f);
+        CasterEnemy.Create(pos, GameAssets.i.UndeadGhost, 10, 1.75f, 2f, 5, 3f, 3);
     }
     private void SpawnUndeadVampire(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 1.6f, 1.5f, 10, 3f);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 1.6f, 1.5f, 10, 3f, 3);
     } 
     private void SpawnUndeadBlackKnight(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 2f, 20, 3f);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 2f, 20, 3f, 5);
     } 
 }

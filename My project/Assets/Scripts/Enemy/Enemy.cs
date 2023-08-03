@@ -7,13 +7,10 @@ public abstract class Enemy : MonoBehaviour
     protected float moveSpeed;
     protected Player player;
     protected int Health;
-
     protected State state;
-
     protected float attackSpeed;
-
     protected int dmg;
-
+    protected int xp;
     protected abstract void Act();
     private Animator animator;
 
@@ -55,6 +52,7 @@ public abstract class Enemy : MonoBehaviour
         DamagePopup.Create(transform.position, damage, false);
         if(Health <= 0){
             Destroy(gameObject);
+            player.GetComponent<PlayerXP>().setPlayerXP(xp);
             // state = State.Death;
             // StartCoroutine(Die());
         }

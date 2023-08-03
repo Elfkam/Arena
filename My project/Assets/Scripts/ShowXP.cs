@@ -6,14 +6,14 @@ using TMPro;
 public class ShowXP : MonoBehaviour
 {
     private PlayerXP playerXP;
-    private TextMeshPro textMesh;
-    void Start()
+    private TextMeshProUGUI textMesh;
+    private void Awake()
     {
         playerXP = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerXP>();
-        textMesh = transform.GetComponent<TextMeshPro>();
+        textMesh = transform.GetComponent<TextMeshProUGUI>();
     }
 
-    void Update()
+    private void Update()
     {
         setXP();
     }
