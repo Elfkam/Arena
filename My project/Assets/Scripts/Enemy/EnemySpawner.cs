@@ -6,26 +6,28 @@ public class EnemySpawner : MonoBehaviour
 {
 
     private GameObject player;
-    private float distanceFromPlayer = 5f;
+    private float timeFromStart = 0;
+    private float distanceFromPlayer = 4f;
+    // time until the new wave will be spawned
     private float timeUntilSpawn = 5f;
+    // curr time until the new wave will be spawned
     private float currTimeUntilSpawn;
+    // time between spawns
+    private float spawnSpeed;
     private int spawnCount;
-    public LineRenderer circleRenderer;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
-        currTimeUntilSpawn = timeUntilSpawn;
-        spawnCount = 1; // TODO: increase with time
-
-        circleRenderer = transform.GetComponent<LineRenderer>();
+        spawnSpeed = 5f;
+        spawnCount = 5;
+        timeUntilSpawn = spawnSpeed;
+        currTimeUntilSpawn = timeUntilSpawn;        
     }
 
     void Update()
     {
         SpawnEnemies();
-        DrawCircle();
     }
 /*
     StartCoroutine(spawnEnemy(5, GameAssets.i.UndeadSkeleton));
@@ -38,39 +40,22 @@ public class EnemySpawner : MonoBehaviour
 */
     private void SpawnEnemies(){
         currTimeUntilSpawn -= Time.deltaTime;
+        timeFromStart += Time.deltaTime;
+
         if(currTimeUntilSpawn < 0){
             SpawnEnemiesAroundPlayer(spawnCount);
-            timeUntilSpawn = 100f;
+            timeUntilSpawn = spawnSpeed;
             currTimeUntilSpawn = timeUntilSpawn;
-            
+            increaseDifficulty();            
         }
     }
-
-    private void DrawCircle()
-    {
-        circleRenderer.loop = true;  // Cela ferme le cercle
-        circleRenderer.positionCount = 100;
-
-        float angle = 0f;
-        Vector3 center = player.transform.position;
-
-        for (int i = 0; i < 100; i++)
-        {
-            float x = center.x + distanceFromPlayer * Mathf.Cos(angle);
-            float y = center.y + distanceFromPlayer * Mathf.Sin(angle);
-
-            circleRenderer.SetPosition(i, new Vector3(x, y, 0f));
-
-            angle += 2f * Mathf.PI / 100;
-        }
-    }
-
     private void SpawnEnemiesAroundPlayer(int count){
         Vector3 center = player.transform.position;
         for (int i = 0; i < count; i++){
             float ang = i * (360/count);
             Vector3 pos = RandomCircle(center, distanceFromPlayer, ang);
-            SpawnUndeadVampire(pos);
+            SpawnEnemyAccordingToTime(pos);
+            
         }
     }
 
@@ -82,15 +67,20 @@ public class EnemySpawner : MonoBehaviour
         return pos;
     }
 
-    private void diffTable(){
-        // 0s  SpawnUndeadSkeleton
-        // 20s pridat SpawnUndeadGhost
-        // 40s pridat SpawnUndeadVampire
-        // idk vyresit podle sily spellu
+    private void SpawnEnemyAccordingToTime(Vector3 pos){
+        SpawnUndeadSkeleton(pos);
+    }
+
+    private void increaseDifficulty(){        
+        if(timeFromStart > 60){
+            timeFromStart = 0;
+            spawnCount += 10;
+            spawnSpeed -= 0.5f;
+        }
     }
 
     private void SpawnUndeadSkeleton(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 10, 2f, 2f, 5, 1); // attackSpeed is based on animations
+        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 10, 2f, 0.5f, 5, 1); // attackSpeed is based on animations
     } 
     private void SpawnUndeadZombie(Vector3 pos){
         BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 20, 1.75f, 0.5f, 10, 2);

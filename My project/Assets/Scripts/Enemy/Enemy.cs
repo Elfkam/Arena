@@ -13,6 +13,11 @@ public abstract class Enemy : MonoBehaviour
     protected int xp;
     protected abstract void Act();
     private Animator animator;
+    protected float speedReduction;
+    protected float debuffDuration;
+    protected float currDebuffDuration;
+
+    protected bool hasDebuff;
 
     public enum State{
         ChasePlayer,
@@ -26,10 +31,12 @@ public abstract class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         animator = transform.GetComponent<Animator>();
+        speedReduction = 1;
     }  
 
-    private void Update()
+    protected virtual void Update()
     {
+        if(hasDebuff) HandleDebuff();
     }
 
     protected void MoveToPlayer(){
@@ -44,7 +51,7 @@ public abstract class Enemy : MonoBehaviour
                 transform.eulerAngles = new Vector2(0, 180);                
             }
         }
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        transform.position += moveDir * getMoveSpeed() * Time.deltaTime;
     }
 
     public void TakeDamage(int damage){
@@ -56,6 +63,38 @@ public abstract class Enemy : MonoBehaviour
             // state = State.Death;
             // StartCoroutine(Die());
         }
+    }
+
+    public void TakeFrostDamage(int initialDamage, float duration, float speedReduction){
+        TakeDamage(initialDamage);      
+        debuffDuration = duration;
+        this.speedReduction = speedReduction;
+
+        SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer spriteRenderer in arr)
+        {
+            spriteRenderer.color = new Color(36, 52, 231);
+        }
+        hasDebuff = true;
+    }
+
+    private void HandleDebuff(){
+        currDebuffDuration += Time.deltaTime;
+
+        if(currDebuffDuration > debuffDuration){
+            hasDebuff = false;
+            currDebuffDuration = 0;
+            speedReduction = 1;
+            SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer spriteRenderer in arr)
+            {
+                spriteRenderer.color = new Color(255, 255, 255);
+            }
+        }
+    }
+
+    protected float getMoveSpeed(){
+        return moveSpeed * speedReduction;
     }
 
     private IEnumerator Die()

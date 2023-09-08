@@ -23,8 +23,8 @@ public class HandlePlayerAttacks : MonoBehaviour
     private void Attack(){
         currTimeUntilAttack -= Time.deltaTime;
         if(currTimeUntilAttack < 0){    
-            if(!IsEnemy()) return;        
-            Instantiate(GameAssets.i.BasicPlayerAttack, transform.position, Quaternion.identity);
+            if(!IsEnemy()) return;
+            PlayerBasicAttack.Create(transform.position, GameAssets.i.BasicFrostBall, 2, PlayerAttacks.TypeSpellElement.Frost);
             currTimeUntilAttack = timeUntilAttack;
         }
     }

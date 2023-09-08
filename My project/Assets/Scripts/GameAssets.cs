@@ -19,6 +19,7 @@ public class GameAssets : MonoBehaviour
     public GameObject UndeadZombie;
     public GameObject UndeadVampire;
     public GameObject UndeadBlackKnight;
-    public GameObject BasicPlayerAttack;
+    public GameObject BasicFireBall;
+    public GameObject BasicFrostBall;
     public GameObject EnemyAttack;
 }

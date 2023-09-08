@@ -50,6 +50,6 @@ MonoBehaviour:
   UndeadZombie: {fileID: 1000010607234278, guid: bdb37e6f2f5ef4cc18c1fd624ccf3398, type: 3}
   UndeadVampire: {fileID: 1000013612721936, guid: 64c849a72fb0a4002a646cdc40cb55f0, type: 3}
   UndeadBlackKnight: {fileID: 1000011201877128, guid: 72954a48f9bc94edd96576c258be84e4, type: 3}
-  BasicPlayerAttack: {fileID: 8486888605527047792, guid: 79f74800f938e4240858665381bf016c, type: 3}
+  BasicFireBall: {fileID: 2974602475713550252, guid: ec66105283ee0dc4195baf32499eca2d, type: 3}
+  BasicFrostBall: {fileID: 6100710097852927236, guid: 747bbb093ec084e45a4d6cf4dffb043e, type: 3}
   EnemyAttack: {fileID: 2794326711458975590, guid: 34774334ede90694d9c017ed6e27bcac, type: 3}
-  ShowXP: {fileID: 3558310243773369340, guid: 2f1f37623ed659e41b9bb17bab6676e8, type: 3}

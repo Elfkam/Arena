@@ -14,13 +14,18 @@ public class PlayerAttacks : MonoBehaviour
     protected Vector3 enemyPosition;
     protected float speed;    
     protected int damage;
+    
+    public enum TypeSpellElement{
+        Fire,
+        Frost,
+        Wind,
+        Lightning,
+    }
     protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
-
-    // TODO: pridat vystreli na random enemy
 
     protected Vector3 GetPossNearestEnemyToPlayer(){
         GameObject nearestEnemy = null;
@@ -28,10 +33,19 @@ public class PlayerAttacks : MonoBehaviour
         foreach (GameObject gm in arrayEnemies) 
         {
             float distance = Vector3.Distance(player.transform.position, gm.transform.position);
-            if(nearestEnemyDistance > distance){
+            if(distance < nearestEnemyDistance){
                 nearestEnemy = gm;
+                nearestEnemyDistance = distance;
             }
         }
         return nearestEnemy.transform.position;
+    }
+
+    protected void setRotation(Vector3 directionToEnemy){
+        Vector3 moveDir = new Vector3(directionToEnemy.x, directionToEnemy.y, 0f);      
+        if (moveDir != Vector3.zero) {
+        	float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
+        	transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 }

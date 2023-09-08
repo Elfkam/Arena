@@ -19,8 +19,9 @@ public class ChargeEnemy : Enemy
         state = State.ChasePlayer;
     }  
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         Act();
     }
 
@@ -73,7 +74,7 @@ public class ChargeEnemy : Enemy
 
     private void HandleChargeMovement(){        
         Vector3 moveDir = new Vector3(directionToPlayer.x, directionToPlayer.y, 0f);
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        transform.position += moveDir * getMoveSpeed() * Time.deltaTime;
         if(Vector3.Distance(transform.position, chargeStartPos) > chargeRange + chargeRange / 2){
             state = State.ChasePlayer;
             moveSpeed = normalSpeed;

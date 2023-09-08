@@ -11,8 +11,9 @@ public class BasicEnemy : Enemy
         state = State.ChasePlayer;
     }  
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         Act();
     }
 
