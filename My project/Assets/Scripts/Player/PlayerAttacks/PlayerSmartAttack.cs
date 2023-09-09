@@ -15,8 +15,9 @@ public class PlayerSmartAttack : PlayerAttacks
         base.Start();
         enemy = GetNearestEnemyToPlayer();
     }
-    protected virtual void Update()
+    protected override void Update()
     {
+        base.Update();
         HandleMovement();
     }
 

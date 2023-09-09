@@ -23,8 +23,9 @@ public class PlayerBasicAttack : PlayerAttacks
         setRotation(directionToEnemy);        
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
+        base.Update();
         HandleMovement();
         CheckDistance();   
     }
