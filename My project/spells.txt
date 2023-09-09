@@ -4,13 +4,13 @@ FIRE -
 Fireball r1 - leti k nejblizsi potvore, 
 Fireball r2 - + dmg
 Fireball r3 - + dmg
-Fireball r4 - pri hitu bouchne a zrani vsechny potvory okolo
+Fireball r4 - pri hitu bouchne a zrani vsechny potvory okolo  +
 
 FROST - potvory se zpomali (zmenim jejich sprite na modrou)
 Frostball r1 - leti k nejblizsi potvore, zpusobi zpomaleni 20%
 Frostball r2 - dmg + vetsi efektnost zpomaleni 50 %
 Frostball r3 - dmg + vetsi efektnost zpomaleni 80%
-Frostball r4 - dmg + zmrazi 100%
+Frostball r4 - dmg + zmrazi 100%  +
 
 LIGHTING - dava jen dmg
 Chain lightning r1 - leti k nejblizsi potvore, preskoci na 1
@@ -18,8 +18,8 @@ Chain lightning r2 - preskoci na 2
 Chain lightning r3 - preskoci na 3
 Chain lightning r4 - preskoci na 4
 
-WIND - potvory se odsoupnou od hrace
-Blast r1 - leti k nejblizsi potvore a odsoupne ji
+Poison / Wind idk- dotka
+Blast r1 - dmg, na poison na x sec
 Blast r2 - dmg
 Blast r3 - dmg odsun
 Blast r4 - dmg idk

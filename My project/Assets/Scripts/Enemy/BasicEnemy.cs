@@ -14,7 +14,7 @@ public class BasicEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-        Act();
+        Act();        
     }
 
     public static BasicEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, int xp){

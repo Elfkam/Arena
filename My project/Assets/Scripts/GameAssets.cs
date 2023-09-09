@@ -20,6 +20,9 @@ public class GameAssets : MonoBehaviour
     public GameObject UndeadVampire;
     public GameObject UndeadBlackKnight;
     public GameObject BasicFireBall;
+    public GameObject FireBall;
+    public GameObject FireBallExplosion;
     public GameObject BasicFrostBall;
+    public GameObject ChainLightning;
     public GameObject EnemyAttack;
 }

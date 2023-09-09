@@ -10,10 +10,9 @@ public class PlayerAttacks : MonoBehaviour
 {
     private GameObject player;
     private GameObject[] arrayEnemies;
-
-    protected Vector3 enemyPosition;
     protected float speed;    
-    protected int damage;
+    protected int damage;    
+    protected TypeSpellElement typeSpellElement;
     
     public enum TypeSpellElement{
         Fire,
@@ -26,8 +25,12 @@ public class PlayerAttacks : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
+    protected virtual void Update()
+    {
+        arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+    }
 
-    protected Vector3 GetPossNearestEnemyToPlayer(){
+    protected GameObject GetNearestEnemyToPlayer(){
         GameObject nearestEnemy = null;
         float nearestEnemyDistance = float.PositiveInfinity;
         foreach (GameObject gm in arrayEnemies) 
@@ -38,7 +41,41 @@ public class PlayerAttacks : MonoBehaviour
                 nearestEnemyDistance = distance;
             }
         }
-        return nearestEnemy.transform.position;
+        return nearestEnemy;
+    }
+
+    protected GameObject GetNearestEnemyToCurrentLocation(){
+        GameObject nearestEnemy = null;
+        float nearestEnemyDistance = float.PositiveInfinity;
+        foreach (GameObject gm in arrayEnemies) 
+        {
+            if(gm){
+                float distance = Vector3.Distance(transform.position, gm.transform.position);
+                if(distance < nearestEnemyDistance){
+                    nearestEnemy = gm;
+                    nearestEnemyDistance = distance;
+                }
+            }
+        }
+        return nearestEnemy;
+    }
+
+    protected GameObject GetNearestEnemyToCurrentLocation(GameObject skipGm){
+        GameObject nearestEnemy = null;
+        float nearestEnemyDistance = float.PositiveInfinity;
+        foreach (GameObject gm in arrayEnemies) 
+        {
+            if(gm){
+                if(gm != skipGm){
+                    float distance = Vector3.Distance(transform.position, gm.transform.position);
+                    if(distance < nearestEnemyDistance){
+                        nearestEnemy = gm;
+                        nearestEnemyDistance = distance;
+                    }
+                }
+            }
+        }
+        return nearestEnemy;
     }
 
     protected void setRotation(Vector3 directionToEnemy){
@@ -47,5 +84,23 @@ public class PlayerAttacks : MonoBehaviour
         	float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
         	transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+    }
+
+    protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement){
+        if(TypeSpellElement.Fire == typeSpellElement){
+            enemy.GetComponent<Enemy>().TakeDamage(damage);
+        } else if(TypeSpellElement.Frost == typeSpellElement){
+            enemy.GetComponent<Enemy>().TakeFrostDamage(damage, 5f, 0.25f); // refactor
+        } else if(TypeSpellElement.Lightning == typeSpellElement){
+            enemy.GetComponent<Enemy>().TakeDamage(damage); 
+        }
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collider2D){
+        GameObject gm = collider2D.gameObject;
+        if(gm.CompareTag("Enemy")){            
+            DmgBasedOnType(gm, typeSpellElement);
+            Destroy(gameObject);
+        }        
     }
 }

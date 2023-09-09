@@ -16,6 +16,7 @@ public abstract class Enemy : MonoBehaviour
     protected float speedReduction;
     protected float debuffDuration;
     protected float currDebuffDuration;
+    protected Rigidbody2D rigidbody;
 
     protected bool hasDebuff;
 
@@ -32,6 +33,7 @@ public abstract class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         animator = transform.GetComponent<Animator>();
         speedReduction = 1;
+        rigidbody = GetComponent<Rigidbody2D>();
     }  
 
     protected virtual void Update()
@@ -73,9 +75,18 @@ public abstract class Enemy : MonoBehaviour
         SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer spriteRenderer in arr)
         {
-            spriteRenderer.color = new Color(36, 52, 231);
+            spriteRenderer.material.color = new Color(36f/255f, 52f/255f, 231f/231f);
         }
         hasDebuff = true;
+    }
+
+    public void TakeWindDamage(int initialDamage, float duration, float speedReduction, float distance){
+        TakeDamage(initialDamage);
+        debuffDuration = duration;
+        this.speedReduction = speedReduction;
+
+        //Knockback 
+        moveSpeed *= -1;
     }
 
     private void HandleDebuff(){
@@ -88,7 +99,7 @@ public abstract class Enemy : MonoBehaviour
             SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
             foreach (SpriteRenderer spriteRenderer in arr)
             {
-                spriteRenderer.color = new Color(255, 255, 255);
+                spriteRenderer.material.color = new Color(1, 1, 1);
             }
         }
     }
