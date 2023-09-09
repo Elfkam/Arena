@@ -1,0 +1,55 @@
+4 ranky spellu -> posledni rank zmeni vizual toho je epicky (jiny ramecek)
+
+FIRE - 
+Fireball r1 - leti k nejblizsi potvore, 
+Fireball r2 - + dmg
+Fireball r3 - + dmg
+Fireball r4 - pri hitu bouchne a zrani vsechny potvory okolo
+
+FROST - potvory se zpomali (zmenim jejich sprite na modrou)
+Frostball r1 - leti k nejblizsi potvore, zpusobi zpomaleni 20%
+Frostball r2 - dmg + vetsi efektnost zpomaleni 50 %
+Frostball r3 - dmg + vetsi efektnost zpomaleni 80%
+Frostball r4 - dmg + zmrazi 100%
+
+LIGHTING - dava jen dmg
+Chain lightning r1 - leti k nejblizsi potvore, preskoci na 1
+Chain lightning r2 - preskoci na 2
+Chain lightning r3 - preskoci na 3
+Chain lightning r4 - preskoci na 4
+
+WIND - potvory se odsoupnou od hrace
+Blast r1 - leti k nejblizsi potvore a odsoupne ji
+Blast r2 - dmg
+Blast r3 - dmg odsun
+Blast r4 - dmg idk
+
+BUFF passivky
+Quick hands r1 - zmensi cd na vsechny spelly o 1s
+Quick hands r2 - o 2s
+Quick hands r3 - o 3s
+Quick hands r4 - 20% vycasteni pridavneho spellu do 2. nejblizsi
+
+FrostLighing r1 - kdyz zrani bleskem potvoru co je zpomalena dostane + 20% dmg z toho spelu
+FrostLighing r2 - 40% dmg z toho spelu
+FrostLighing r3 - 60% dmg z toho spelu
+FrostLighing r4 - 100% dmg z toho spelu
+
+Glass Cannon r1 - zvetsi dmg, ktery dostavas o 30% a tvuj dmg o 30%
+Glass Cannon r2 - zvetsi dmg, ktery dostavas o 60% a tvuj dmg o 60%
+Glass Cannon r3 - zvetsi dmg, ktery dostavas o 100% a tvuj dmg o 100%
+Glass Cannon r4 - zvetsi dmg, ktery dostavas o 1000% a tvuj dmg o 1000%
+
+Necromancer r1 - pri zabiti potcory mas sanci ji vyvolat aby bojovala s tebou - 10% na 5s
+Necromancer r2 - 30% na 5s
+Necromancer r3 - 60% na 5s
+Necromancer r4 - 100% na 5s
+
+Multicaset r1 - vystrali dalsi 1 projektyly smerem trochu vedle kam leti ten hlavni ale redukce dmg o 60%
+Multicaset r2 - vystrali dalsi 2 projektyly smerem trochu vedle kam leti ten hlavni ale redukce dmg o 60%
+Multicaset r3 - redukce dmg o 30%
+Multicaset r4 - bez redukce dmg
+
+DEFF pasivky
+Hp  - + x hp
+Cheat death - pri umreni se ozivis s 20% hp
