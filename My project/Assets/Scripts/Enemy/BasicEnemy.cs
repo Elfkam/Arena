@@ -9,7 +9,7 @@ public class BasicEnemy : Enemy
     {
         base.Start();
         state = State.ChasePlayer;
-    }  
+    }
 
     protected override void Update()
     {
