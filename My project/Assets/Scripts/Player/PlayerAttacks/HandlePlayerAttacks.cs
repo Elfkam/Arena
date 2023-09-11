@@ -5,7 +5,7 @@ using UnityEngine;
 public class HandlePlayerAttacks : MonoBehaviour
 {
     // Start is called before the first frame update
-    private GameObject[] arrayEnemies;    
+    private GameObject[] arrayEnemies;
     private float timeUntilAttack = 2f;
     private float currTimeUntilAttack;
     void Start()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerXP : MonoBehaviour
 {
+    [SerializeField] GameObject LevelUpMenu;
     private int XP;
     private int XPForLevel;
     private int playerLevel;
@@ -11,7 +12,7 @@ public class PlayerXP : MonoBehaviour
     void Start()
     {
         XP = 0;
-        XPForLevel = 20;
+        XPForLevel = 2;
         playerLevel = 1;
     }
 
@@ -39,6 +40,6 @@ public class PlayerXP : MonoBehaviour
     }
 
     private void LevelUp(){
-        // TODO: show level up window
+        LevelUpMenu.SetActive(true);
     }
 }
