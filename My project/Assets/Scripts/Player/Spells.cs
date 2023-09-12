@@ -1,46 +1,92 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spells : MonoBehaviour
 {
-    private List<string> spells;
+    // all spells in the game
+    private List<string> defaultSpells;
+    // spells to choose from during levelUp (including ranks)
+    private List<string> availableSpells;
+    // spells the player already knows
+    private List<string> learnedSpells;
+    private int MAX_RANK_SPELL = 4;
+
     private void Start()
     {
-        spells = GetDefaultSpells();
+        defaultSpells = GetDefaultSpells();
+        availableSpells = GetDefaultSpells();
+        learnedSpells = new List<string>();
     }
+
     private List<string> GetDefaultSpells(){
-        List<string> defaultS = new List<string> {"Fireball", "Frostball", "ChainLightning", "QuickHands", "FrostLighing", "GlassCannon", "Multicast"};
+        List<string> defaultS = new List<string> {"Fireball_1", "Frostball_1", "ChainLightning_1", "QuickHands_1", "FrostLighing_1", "GlassCannon_1", "Multicast_1"};
         return defaultS;
     }
 
-    private void SetButtons(){
-        List<string> spellsToButtons = new List<string>();        
-        // Get 3 random spells
-        for (int i = 0; i < 3; i++)
+    public List<string> GetAvailableSpells(){
+        return availableSpells;
+    }
+    public void SetAvailableSpells(List<string> newAvailableSpells){
+        availableSpells = newAvailableSpells;
+    }
+
+    public List<string> GetLearnedSpells(){
+        return learnedSpells;
+    }
+
+    public void LearnNewSpell(string newSpellWithoutRank){
+        string newSpell = GetSpellWithRank(newSpellWithoutRank);
+        // remove rank
+        string spellToLearn = newSpell.Substring(0,  newSpell.Length - 1);
+
+        bool spellAdded = false;
+        // check if player already knows this spell (diffrent rank)
+        for (int i = 0; i < learnedSpells.Count; i++)
         {
-            if(spells.Count == 0 ) return;
-            int index = UnityEngine.Random.Range(0, spells.Count);
-            spellsToButtons.Add(spells[index]);
-            spells.RemoveAt(index);
-        }
-        // Put back increased ranks of that spells
-        for (int i = 0; i < 3; i++)
-        {
-            string spell = spells[i];
-            char lastChar = spell[spell.Length - 1];
-            // selected spell has already rank
-            if(Char.IsNumber(lastChar)){
-                int rankOfSpell = int.Parse(lastChar.ToString());
-                // its not max rank -> increase it
-                if(rankOfSpell < 4){
-                    string newRank = (rankOfSpell + 1).ToString();
-                    string newSpell =  spells[i].Substring(0,  spells[i].Length - 1);
-                    spells.Add(newSpell + newRank);
-                }
-            }else{
-                spells.Add(spells[i] + "1");
+            string spell = learnedSpells[i];
+            string spellToCheck = spell.Substring(0,  spell.Length - 1);
+
+            if(spellToCheck == spellToLearn){
+                //remove old one and add spell with bigger rank
+                learnedSpells.Remove(spell);
+                learnedSpells.Add(newSpell);
+                spellAdded = true;
             }
         }
+        // its new spell 
+        if(!spellAdded) learnedSpells.Add(newSpell);
+
+        UpdateAvailableSpells(newSpell);
+    }
+
+    private void UpdateAvailableSpells(string learnedSpellArg){
+        int learnedSpellRank = Int32.Parse(learnedSpellArg[learnedSpellArg.Length - 1].ToString());
+        // remove rank
+        string learnedSpell = learnedSpellArg.Substring(0,  learnedSpellArg.Length - 1);
+        int newRank = learnedSpellRank + 1;
+        // remove old spell
+        availableSpells.Remove(learnedSpellArg);
+
+        // check if it is already max rank
+        if(newRank < MAX_RANK_SPELL){
+            // add new spell with new rank
+            availableSpells.Add(learnedSpell + newRank);
+        }
+    }
+
+    // find in availableSpells spell with this name and return it
+    private string GetSpellWithRank(string spell){
+        for (int i = 0; i < availableSpells.Count; i++)
+        {
+            string spellToCheck = availableSpells[i].Substring(0,  availableSpells[i].Length - 2);
+            if(spell == spellToCheck){
+                return availableSpells[i];
+            }
+        }
+        return "";
     }
 }
+        
+

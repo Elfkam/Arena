@@ -15,18 +15,11 @@ public class PlayerXP : MonoBehaviour
         XPForLevel = 2;
         playerLevel = 1;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void setPlayerXP(int amount){
         XP += amount;
         if(XP >= XPForLevel){
             XP = XPForLevel - XP;
-            XPForLevel += 10;
+            XPForLevel += 1;
             playerLevel += 1;
             LevelUp();
         }
@@ -40,6 +33,14 @@ public class PlayerXP : MonoBehaviour
     }
 
     private void LevelUp(){
-        LevelUpMenu.SetActive(true);
+        foreach (GameObject item in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
+        {
+            if(item == LevelUpMenu){
+                item.GetComponent<LevelUpMenu>().LevelUpSetup();
+            }
+        }
+        //GameObject.Find("GameHandler/UI/LevelUpMenu").SetActive(true);
+        GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
+        Time.timeScale = 0; //pause game
     }
 }

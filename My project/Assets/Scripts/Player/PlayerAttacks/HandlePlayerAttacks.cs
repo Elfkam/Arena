@@ -6,8 +6,10 @@ public class HandlePlayerAttacks : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject[] arrayEnemies;
-    private float timeUntilAttack = 2f;
+    private float timeUntilAttack = 0.5f;
     private float currTimeUntilAttack;
+
+
     void Start()
     {
         currTimeUntilAttack = timeUntilAttack;

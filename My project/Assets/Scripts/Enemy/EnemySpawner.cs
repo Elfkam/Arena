@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     private float timeFromStart = 0;
     private float distanceFromPlayer = 4f;
     // time until the new wave will be spawned
-    private float timeUntilSpawn = 5f;
+    private float timeUntilSpawn;
     // curr time until the new wave will be spawned
     private float currTimeUntilSpawn;
     // time between spawns
@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        spawnSpeed = 5f;
+        spawnSpeed = 3f;
         spawnCount = 5;
         timeUntilSpawn = spawnSpeed;
         currTimeUntilSpawn = timeUntilSpawn;        

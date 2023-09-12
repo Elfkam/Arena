@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 787078499318375507}
   - component: {fileID: 1936312370463091633}
   - component: {fileID: 6845921120399712181}
+  - component: {fileID: -1367970969378267568}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -91,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472549aff591cb142a78501b002e0a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelUpMenu: {fileID: 0}
 --- !u!70 &1936312370463091633
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,6 +155,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-1367970969378267568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960322040918021642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa0c277594469949acdc2ad36f2eccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4147044144713001711
 GameObject:
   m_ObjectHideFlags: 0
