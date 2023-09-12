@@ -12,8 +12,9 @@ public class PlayerXP : MonoBehaviour
     void Start()
     {
         XP = 0;
-        XPForLevel = 2;
+        XPForLevel = 1;
         playerLevel = 1;
+        SelectFirstSpell();
     }
     public void setPlayerXP(int amount){
         XP += amount;
@@ -32,6 +33,17 @@ public class PlayerXP : MonoBehaviour
         return XPForLevel;
     }
 
+    private void SelectFirstSpell(){
+        foreach (GameObject item in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
+        {
+            if(item == LevelUpMenu){
+                item.GetComponent<LevelUpMenu>().SelectSpellStartMenu();
+            }
+        }
+        GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
+        Time.timeScale = 0; //pause game
+
+    }
     private void LevelUp(){
         foreach (GameObject item in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
         {
@@ -39,7 +51,6 @@ public class PlayerXP : MonoBehaviour
                 item.GetComponent<LevelUpMenu>().LevelUpSetup();
             }
         }
-        //GameObject.Find("GameHandler/UI/LevelUpMenu").SetActive(true);
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
         Time.timeScale = 0; //pause game
     }

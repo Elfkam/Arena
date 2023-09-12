@@ -19,8 +19,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        spawnSpeed = 3f;
-        spawnCount = 5;
+        spawnSpeed = 2f;
+        spawnCount = 4;
         timeUntilSpawn = spawnSpeed;
         currTimeUntilSpawn = timeUntilSpawn;        
     }

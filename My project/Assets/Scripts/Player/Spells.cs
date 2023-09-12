@@ -21,7 +21,7 @@ public class Spells : MonoBehaviour
     }
 
     private List<string> GetDefaultSpells(){
-        List<string> defaultS = new List<string> {"Fireball_1", "Frostball_1", "ChainLightning_1", "QuickHands_1", "FrostLighing_1", "GlassCannon_1", "Multicast_1"};
+        List<string> defaultS = new List<string> {"FireBall_1", "FrostBall_1", "ChainLightning_1", "QuickHands_1", "FrostLighing_1", "GlassCannon_1", "Multicast_1"};
         return defaultS;
     }
 
@@ -59,6 +59,7 @@ public class Spells : MonoBehaviour
         if(!spellAdded) learnedSpells.Add(newSpell);
 
         UpdateAvailableSpells(newSpell);
+        transform.GetComponent<HandlePlayerAttacks>().AddSpellToSpellBook(newSpell);
     }
 
     private void UpdateAvailableSpells(string learnedSpellArg){
