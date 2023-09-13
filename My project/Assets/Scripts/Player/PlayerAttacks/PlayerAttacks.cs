@@ -27,10 +27,11 @@ public class PlayerAttacks : MonoBehaviour
     }
     protected virtual void Update()
     {
-        arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
     }
 
     protected GameObject GetNearestEnemyToPlayer(){
+        arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject nearestEnemy = null;
         float nearestEnemyDistance = float.PositiveInfinity;
         foreach (GameObject gm in arrayEnemies) 
@@ -45,6 +46,7 @@ public class PlayerAttacks : MonoBehaviour
     }
 
     protected GameObject GetNearestEnemyToCurrentLocation(){
+        arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject nearestEnemy = null;
         float nearestEnemyDistance = float.PositiveInfinity;
         foreach (GameObject gm in arrayEnemies) 
@@ -61,6 +63,7 @@ public class PlayerAttacks : MonoBehaviour
     }
 
     protected GameObject GetNearestEnemyToCurrentLocation(GameObject skipGm){
+        arrayEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject nearestEnemy = null;
         float nearestEnemyDistance = float.PositiveInfinity;
         foreach (GameObject gm in arrayEnemies) 

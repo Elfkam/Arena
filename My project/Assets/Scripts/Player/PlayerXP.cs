@@ -48,6 +48,8 @@ public class PlayerXP : MonoBehaviour
             }
         }
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
+        GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);
+        GameObject.Find("GameHandler/UI/PauseButton").SetActive(false);
         Time.timeScale = 0; //pause game
 
     }
@@ -59,6 +61,8 @@ public class PlayerXP : MonoBehaviour
             }
         }
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
+        GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);
+        GameObject.Find("GameHandler/UI/PauseButton").SetActive(false);
         Time.timeScale = 0; //pause game
     }
 }

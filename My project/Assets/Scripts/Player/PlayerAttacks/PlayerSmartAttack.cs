@@ -35,13 +35,14 @@ public class PlayerSmartAttack : PlayerAttacks
     }
 
     private void HandleMovement(){
-        if(!enemy) {
+        try{  
+            Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
+            Vector3 moveDir = new Vector3(directionToEnemy.x, directionToEnemy.y, 0f);      
+            setRotation(directionToEnemy);
+            transform.position += moveDir * speed * Time.deltaTime;
+        }catch{
             enemy = GetNearestEnemyToCurrentLocation();
-            if(!enemy) Destroy(this);
-        }     
-        Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;  
-        Vector3 moveDir = new Vector3(directionToEnemy.x, directionToEnemy.y, 0f);      
-        setRotation(directionToEnemy);
-        transform.position += moveDir * speed * Time.deltaTime;
+            if(enemy == null) Destroy(gameObject);
+        }        
     }
 }

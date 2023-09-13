@@ -45,7 +45,7 @@ public class LevelUpMenu : MonoBehaviour
         int i = 0;
         foreach (Image btn in buttons)
         {
-            if(btn.gameObject.name == "Button"){
+            if(btn.gameObject.name == "Icon"){
                 string spell = spellsToButtons[i];
                 string nameOfSpell = spell.Substring(0,  spell.Length - 2);
                 char rankOfSpell = spell[spell.Length - 1];
@@ -65,9 +65,12 @@ public class LevelUpMenu : MonoBehaviour
 
     public void ChooseSpell()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().LearnNewSpell(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name);
+        string spellName = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().sprite.name;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().LearnNewSpell(spellName);
         GameObject.Find("GameHandler/UI/LevelUpMenu").SetActive(false);
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(true);
+        GameObject.Find("GameHandler/UI/Health Bar").SetActive(true);
+        GameObject.Find("GameHandler/UI/PauseButton").SetActive(true);
         Time.timeScale = 1;
     }
 }

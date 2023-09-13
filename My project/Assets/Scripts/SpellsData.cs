@@ -43,7 +43,7 @@ public static class SpellsData
             { "ChainLightning_3", new SpellInfo { SpellName = "ChainLightning_3", SpellDescription = "Popis ChainLightning_3", CastTime = 1.6f, TimeUntilCast = 1.6f, 
             SpawnSpell = (Vector3 pos) => { PlayerChainAttack.Create(pos, GameAssets.i.ChainLightning, PlayerAttacks.TypeSpellElement.Lightning, 5, 2, 10f);} } },
             { "ChainLightning_4", new SpellInfo { SpellName = "ChainLightning_4", SpellDescription = "Popis ChainLightning_4", CastTime = 1.5f, TimeUntilCast = 1.5f, 
-            SpawnSpell = (Vector3 pos) => { PlayerChainAttack.Create(pos, GameAssets.i.ChainLightning, PlayerAttacks.TypeSpellElement.Lightning, 5, 3, 10f);} } },
+            SpawnSpell = (Vector3 pos) => { PlayerChainAttack.Create(pos, GameAssets.i.ChainLightning, PlayerAttacks.TypeSpellElement.Lightning, 5, 3, 20f);} } },
         };
         return spells;
     }
