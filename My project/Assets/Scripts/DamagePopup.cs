@@ -16,24 +16,25 @@ public class DamagePopup : MonoBehaviour
         Disappear();
     }
 
-    public static DamagePopup Create(Vector3 position, int damageAmount, bool isCriticalHit){
+    public static DamagePopup Create(Vector3 position, int damageAmount, bool isCriticalHit, PlayerAttacks.TypeSpellElement typeSpellElement){
         Transform damagePopupTransform = Instantiate(GameAssets.i.DamagePopup, position, Quaternion.identity);
         DamagePopup damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
-        damagePopup.Setup(damageAmount, isCriticalHit);
+        damagePopup.Setup(damageAmount, isCriticalHit, typeSpellElement);
         return damagePopup;
     }
 
-    public void Setup(int damageAmount, bool isCriticalHit){
+    public void Setup(int damageAmount, bool isCriticalHit, PlayerAttacks.TypeSpellElement typeSpellElement){
         textMesh.SetText(damageAmount.ToString());
-        if(isCriticalHit){
-            textMesh.fontSize = 6;
-            textColor = Color.yellow;
-        }else{
-            textMesh.fontSize = 4;
-            textColor = Color.red;
-        }
-        textMesh.color = textColor;
+        textMesh.color = GetColor(typeSpellElement);
         timeUntilDisappearStart = 1f;
+    }
+
+    private Color GetColor(PlayerAttacks.TypeSpellElement typeSpellElement){
+        if(PlayerAttacks.TypeSpellElement.Fire == typeSpellElement) return Color.yellow;
+        if(PlayerAttacks.TypeSpellElement.Frost == typeSpellElement) return Color.cyan;
+        if(PlayerAttacks.TypeSpellElement.Lightning == typeSpellElement) return Color.magenta;
+        if(PlayerAttacks.TypeSpellElement.Wind == typeSpellElement) return Color.grey;
+        return Color.red;
     }
 
     private void Disappear(){

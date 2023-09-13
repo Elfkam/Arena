@@ -88,11 +88,11 @@ public class PlayerAttacks : MonoBehaviour
 
     protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement){
         if(TypeSpellElement.Fire == typeSpellElement){
-            enemy.GetComponent<Enemy>().TakeDamage(damage);
+            enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement);
         } else if(TypeSpellElement.Frost == typeSpellElement){
             enemy.GetComponent<Enemy>().TakeFrostDamage(damage, 5f, 0.25f); // refactor
         } else if(TypeSpellElement.Lightning == typeSpellElement){
-            enemy.GetComponent<Enemy>().TakeDamage(damage); 
+            enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement); 
         }
     }
 

@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Spells : MonoBehaviour
 {
-    // all spells in the game
-    private List<string> defaultSpells;
     // spells to choose from during levelUp (including ranks)
     private List<string> availableSpells;
     // spells the player already knows
@@ -15,16 +13,9 @@ public class Spells : MonoBehaviour
 
     private void Start()
     {
-        defaultSpells = GetDefaultSpells();
-        availableSpells = GetDefaultSpells();
+        availableSpells = SpellsData.GetDefaultSpells();
         learnedSpells = new List<string>();
     }
-
-    private List<string> GetDefaultSpells(){
-        List<string> defaultS = new List<string> {"FireBall_1", "FrostBall_1", "ChainLightning_1", "QuickHands_1", "FrostLighing_1", "GlassCannon_1", "Multicast_1"};
-        return defaultS;
-    }
-
     public List<string> GetAvailableSpells(){
         return availableSpells;
     }
@@ -42,6 +33,7 @@ public class Spells : MonoBehaviour
         string spellToLearn = newSpell.Substring(0,  newSpell.Length - 1);
 
         bool spellAdded = false;
+        string removedSpell = "";
         // check if player already knows this spell (diffrent rank)
         for (int i = 0; i < learnedSpells.Count; i++)
         {
@@ -50,6 +42,7 @@ public class Spells : MonoBehaviour
 
             if(spellToCheck == spellToLearn){
                 //remove old one and add spell with bigger rank
+                removedSpell = spell;
                 learnedSpells.Remove(spell);
                 learnedSpells.Add(newSpell);
                 spellAdded = true;
@@ -59,7 +52,7 @@ public class Spells : MonoBehaviour
         if(!spellAdded) learnedSpells.Add(newSpell);
 
         UpdateAvailableSpells(newSpell);
-        transform.GetComponent<HandlePlayerAttacks>().AddSpellToSpellBook(newSpell);
+        transform.GetComponent<HandlePlayerAttacks>().AddSpellToSpellBook(newSpell, removedSpell);
     }
 
     private void UpdateAvailableSpells(string learnedSpellArg){

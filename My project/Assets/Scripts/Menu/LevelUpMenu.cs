@@ -55,7 +55,8 @@ public class LevelUpMenu : MonoBehaviour
 
                 // set text
                 GameObject text = btn.transform.parent.gameObject.transform.GetChild(1).gameObject;
-                text.GetComponent<TextMeshProUGUI>().SetText(nameOfSpell + " lv-" + rankOfSpell);
+                string textS = SpellsData.GetDictionary()[spellsToButtons[i]].SpellDescription;
+                text.GetComponent<TextMeshProUGUI>().SetText(textS);
                 i++;                
             }
         }

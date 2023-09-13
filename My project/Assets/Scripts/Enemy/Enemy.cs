@@ -56,9 +56,9 @@ public abstract class Enemy : MonoBehaviour
         transform.position += moveDir * getMoveSpeed() * Time.deltaTime;
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement){
         Health -= damage;
-        DamagePopup.Create(transform.position, damage, false);
+        DamagePopup.Create(transform.position, damage, false, typeSpellElement);
         if(Health <= 0){
             Destroy(gameObject);
             player.GetComponent<PlayerXP>().setPlayerXP(xp);
@@ -68,7 +68,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public void TakeFrostDamage(int initialDamage, float duration, float speedReduction){
-        TakeDamage(initialDamage);      
+        TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Frost);      
         debuffDuration = duration;
         this.speedReduction = speedReduction;
 
@@ -81,7 +81,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public void TakeWindDamage(int initialDamage, float duration, float speedReduction, float distance){
-        TakeDamage(initialDamage);
+        TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Wind);
         debuffDuration = duration;
         this.speedReduction = speedReduction;
 

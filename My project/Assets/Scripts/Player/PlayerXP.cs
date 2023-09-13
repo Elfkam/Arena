@@ -22,7 +22,7 @@ public class PlayerXP : MonoBehaviour
             XP = XPForLevel - XP;
             XPForLevel += 1;
             playerLevel += 1;
-            LevelUp();
+            if(CheckIfPlayerCanLevelUp()) LevelUp();
         }
     }
 
@@ -31,6 +31,13 @@ public class PlayerXP : MonoBehaviour
     }
     public int getPlayerXPForLevel(){
         return XPForLevel;
+    }
+
+    // TODO: replace with max level of player
+    private bool CheckIfPlayerCanLevelUp(){
+        List<string> spells = GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().GetAvailableSpells();
+        if(spells.Count < 3) return false;
+        return true;
     }
 
     private void SelectFirstSpell(){
