@@ -9,6 +9,10 @@ public class PauseMenu : MonoBehaviour
 {
     public void GiveUp()
     {
+        GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(true);
+        GameObject.Find("GameHandler/UI/Health Bar").SetActive(true);
+        gameObject.SetActive(false);
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
 
