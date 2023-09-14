@@ -33,6 +33,10 @@ public class PlayerXP : MonoBehaviour
         return XPForLevel;
     }
 
+    public int GetPlayerLevel(){
+        return playerLevel;
+    }
+
     // TODO: replace with max level of player
     private bool CheckIfPlayerCanLevelUp(){
         List<string> spells = GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().GetAvailableSpells();

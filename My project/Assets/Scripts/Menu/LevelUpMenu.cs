@@ -20,7 +20,7 @@ public class LevelUpMenu : MonoBehaviour
         List<string> spells = GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().GetAvailableSpells();
         List<string> spellsToButtons = new List<string>();
 
-
+        GameObject.Find("GameHandler/UI/LevelUpMenu/Header/Description").GetComponent<TextMeshProUGUI>().SetText("Level Up!");
         List<int> indexes = GetRandomNumber(0, spells.Count, 3);
         // Get 3 random spells
         for (int i = 0; i < indexes.Count; i++)

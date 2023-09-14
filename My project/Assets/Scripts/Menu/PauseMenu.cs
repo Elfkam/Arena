@@ -1,23 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void GiveUp()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
@@ -25,6 +14,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseMenuButton(){
         SetButtons(GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().GetLearnedSpells());
+        SetLevel();
         gameObject.SetActive(true);
         PauseGame();
     }
@@ -39,9 +29,16 @@ public class PauseMenu : MonoBehaviour
             if(gm.transform.GetChild(i) != null) {
                 gm.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Icons/" + nameOfSpell);
                 gm.transform.GetChild(i).gameObject.GetComponent<Image>().color = Color.white;
+                // set rank
+                gm.transform.GetChild(i).gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("Rank " + spell[spell.Length - 1]);
             }
             i++;
         }
+    }
+
+    private void SetLevel(){
+        int lv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerXP>().GetPlayerLevel();
+        GameObject.Find("GameHandler/UI/PauseMenu/PlayerInfo/Level").GetComponent<TextMeshProUGUI>().SetText("Level: " + lv);
     }
 
     public void PauseGame(){
