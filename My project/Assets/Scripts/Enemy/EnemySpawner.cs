@@ -46,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemiesAroundPlayer(spawnCount);
             timeUntilSpawn = spawnSpeed;
             currTimeUntilSpawn = timeUntilSpawn;
-            increaseDifficulty();            
+           // increaseDifficulty();            
         }
     }
     private void SpawnEnemiesAroundPlayer(int count){
@@ -54,6 +54,8 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < count; i++){
             float ang = i * (360/count);
             Vector3 pos = RandomCircle(center, distanceFromPlayer, ang);
+            pos.x = pos.x + Random.Range(-distanceFromPlayer/2, distanceFromPlayer/2);
+            pos.y = pos.y + Random.Range(-distanceFromPlayer/2, distanceFromPlayer/2);
             SpawnEnemyAccordingToTime(pos);
             
         }
