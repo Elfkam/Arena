@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         animator = transform.GetComponent<Animator>();
-        speedReduction = 1;
+        speedReduction = 0;
     }  
 
     protected virtual void Update()
@@ -64,15 +64,33 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeFrostDamage(int initialDamage, float duration, float speedReduction){
-        TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Frost);      
-        debuffDuration = duration;
-        this.speedReduction = speedReduction;
-
+    public void TakeFrostDamage(int initialDamage){
+        TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Frost);        
+        debuffDuration = 5f;
+        // debuff is at max stacks
+        if(speedReduction == 1f) return;
+        speedReduction += 0.25f;
+        Color color = new Color(1, 1, 1);;
+        switch(speedReduction){
+            case(0.25f):
+                color = new Color(77f/255f, 241f/255f, 227f/231f);
+                break;
+            case(0.5f):
+                color = new Color(37f/255f, 108f/255f, 147f/231f);
+                break;
+            case(0.75f):
+                color = new Color(35f/255f, 35f/255f, 231f/231f);
+                break;
+            case(1f):
+                color = new Color(14f/255f, 14f/255f, 68f/231f);
+                break;
+            default:
+                break;
+        }
         SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer spriteRenderer in arr)
         {
-            spriteRenderer.material.color = new Color(36f/255f, 52f/255f, 231f/231f);
+            spriteRenderer.material.color = color;
         }
         hasDebuff = true;
     }
@@ -92,7 +110,7 @@ public abstract class Enemy : MonoBehaviour
         if(currDebuffDuration > debuffDuration){
             hasDebuff = false;
             currDebuffDuration = 0;
-            speedReduction = 1;
+            speedReduction = 0;
             SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
             foreach (SpriteRenderer spriteRenderer in arr)
             {
@@ -102,7 +120,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     protected float getMoveSpeed(){
-        return moveSpeed * speedReduction;
+        return moveSpeed * (1 - speedReduction);
     }
 
     private IEnumerator Die()

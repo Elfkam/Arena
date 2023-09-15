@@ -10,10 +10,10 @@ public class LevelUpMenu : MonoBehaviour
     public void SelectSpellStartMenu(){
         List<string> spellsToButtons = new List<string>
         {
+            "FrostBall_1",
             "GreenBall_1",
             "Tornado_1",
             "WindBlast_1",
-            "FrostBall_1",
             "ChainLightning_1",
             "FireBall_1"
         };

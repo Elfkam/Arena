@@ -93,7 +93,7 @@ public class PlayerAttacks : MonoBehaviour
         if(TypeSpellElement.Fire == typeSpellElement){
             enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement);
         } else if(TypeSpellElement.Frost == typeSpellElement){
-            enemy.GetComponent<Enemy>().TakeFrostDamage(damage, 5f, 0.25f); // refactor
+            enemy.GetComponent<Enemy>().TakeFrostDamage(damage);
         } else if(TypeSpellElement.Lightning == typeSpellElement){
             enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement); 
         } else if(TypeSpellElement.Wind == typeSpellElement){

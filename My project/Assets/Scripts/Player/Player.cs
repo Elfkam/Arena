@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     }
 
     public void TakeDamage(int damage){
+        Debug.Log("TAKE DMG");
         Health -= damage;
         healthBar.SetHealth(Health);
         if(Health <= 0){

@@ -20,8 +20,8 @@ public class EnemySpawner : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         spawnSpeed = 2f;
-        spawnCount = 4;
-        timeUntilSpawn = spawnSpeed;
+        spawnCount = 1;
+        timeUntilSpawn = 1f;
         currTimeUntilSpawn = timeUntilSpawn;        
     }
 
@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void SpawnEnemyAccordingToTime(Vector3 pos){
-        SpawnUndeadSkeleton(pos);
+        SpawnUndeadBlackKnight(pos);
     }
 
     private void increaseDifficulty(){        
@@ -91,9 +91,9 @@ public class EnemySpawner : MonoBehaviour
         CasterEnemy.Create(pos, GameAssets.i.UndeadGhost, 10, 1.75f, 2f, 5, 3f, 3);
     }
     private void SpawnUndeadVampire(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 1.6f, 1.5f, 10, 3f, 3);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 20, 1.6f, 0.8f, 3, 3f, 2);
     } 
     private void SpawnUndeadBlackKnight(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 2f, 20, 3f, 5);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30, 3f, 1f, 20, 3f, 5);
     } 
 }

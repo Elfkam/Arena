@@ -23,6 +23,7 @@ public class ChargeEnemy : Enemy
     {
         base.Update();
         Act();
+        timeToAttack -= Time.deltaTime;
     }
 
     public static ChargeEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float chargeRange, int xp){
@@ -38,7 +39,7 @@ public class ChargeEnemy : Enemy
         base.moveSpeed = speed;
         base.dmg = dmg;
         base.xp = xp;
-        timeToAttack = attackSpeed;
+        timeToAttack = 0;
         chargeRange = chargeRangeInput;
         timeToCharge = prepareToCharge;
         normalSpeed = speed;
@@ -78,6 +79,7 @@ public class ChargeEnemy : Enemy
         if(Vector3.Distance(transform.position, chargeStartPos) > chargeRange + chargeRange / 2){
             state = State.ChasePlayer;
             moveSpeed = normalSpeed;
+            RemoveChargeColor();
         }
     }
 
@@ -86,10 +88,7 @@ public class ChargeEnemy : Enemy
             directionToPlayer = (player.transform.position - transform.position).normalized;
             chargeStartPos = transform.position;
         }
-		/* foreach(SpriteRenderer c in gameObject.GetComponentsInChildren<SpriteRenderer>()) {
-			c.color = new Color(122, 95, 48);
-        } */
-		
+        SetChargeColor();		
         timeToCharge -= Time.deltaTime;
         if(timeToCharge < 0){
             moveSpeed = chargeSpeed;
@@ -99,7 +98,6 @@ public class ChargeEnemy : Enemy
     }
        
     private void Attack() {
-        timeToAttack -= Time.deltaTime;
         if(timeToAttack < 0){    
             timeToAttack = attackSpeed;
             player.TakeDamage(dmg);
@@ -108,15 +106,31 @@ public class ChargeEnemy : Enemy
     private void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Player")){
-            if(state != State.Charge) state = State.Attack;
-            else player.TakeDamage(dmg); // deal dmg to player during charge
+            state = State.Attack;
+            moveSpeed = normalSpeed;
+            RemoveChargeColor();
         }        
     }
     private void OnTriggerExit2D(Collider2D collider2D) {     
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Player")){            
             state = State.ChasePlayer;
-            timeToAttack = attackSpeed; //reset attack
         }        
+    }
+
+    private void SetChargeColor(){
+        SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer spriteRenderer in arr)
+        {
+            spriteRenderer.material.color = new Color(174f/255f, 21f/255f, 21f/255f);
+        }
+    }
+
+    private void RemoveChargeColor(){
+        SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer spriteRenderer in arr)
+        {
+            spriteRenderer.material.color = new Color(1f, 1f, 1f);
+        }
     }
 }

@@ -63,7 +63,7 @@ public static class SpellsData
             { "Tornado_4", new SpellInfo { SpellName = "Tornado_4", SpellDescription = "Popis Tornado_4", CastTime = 1.5f, TimeUntilCast = 1.5f, 
             SpawnSpell = (Vector3 pos) => { PlayerStaticPointAttack.Create(pos, GameAssets.i.Tornado, 2, PlayerAttacks.TypeSpellElement.Wind, 5f, 5f);} } },
 
-            { "GreenBall_1", new SpellInfo { SpellName = "GreenBall_1", SpellDescription = "Popis GreenBall_1", CastTime = 1000f, TimeUntilCast = 0f, 
+            { "GreenBall_1", new SpellInfo { SpellName = "GreenBall_1", SpellDescription = "Popis GreenBall_1", CastTime = 2f, TimeUntilCast = 2f, 
             SpawnSpell = (Vector3 pos) => { PlayerRotationAttack.Create(pos, GameAssets.i.GreenBall, 2, PlayerAttacks.TypeSpellElement.Fire, 2f, 2f);} } },
             { "GreenBall_2", new SpellInfo { SpellName = "GreenBall_1", SpellDescription = "Popis GreenBall_1", CastTime = 1.8f, TimeUntilCast = 1.8f, 
             SpawnSpell = (Vector3 pos) => { PlayerStaticPointAttack.Create(pos, GameAssets.i.GreenBall, 2, PlayerAttacks.TypeSpellElement.Wind, 5f, 5f);} } },
