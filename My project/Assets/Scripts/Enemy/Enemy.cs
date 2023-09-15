@@ -16,8 +16,6 @@ public abstract class Enemy : MonoBehaviour
     protected float speedReduction;
     protected float debuffDuration;
     protected float currDebuffDuration;
-    protected Rigidbody2D rigidbody;
-
     protected bool hasDebuff;
 
     public enum State{
@@ -33,7 +31,6 @@ public abstract class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         animator = transform.GetComponent<Animator>();
         speedReduction = 1;
-        rigidbody = GetComponent<Rigidbody2D>();
     }  
 
     protected virtual void Update()

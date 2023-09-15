@@ -9,7 +9,7 @@ using UnityEngine;
 */
 public class PlayerBasicAttack : PlayerAttacks
 {
-    private float distance;
+    protected float distance;
     protected Vector3 enemyPosition;
     protected Vector2 directionToEnemy;
     private Vector3 startPossition;

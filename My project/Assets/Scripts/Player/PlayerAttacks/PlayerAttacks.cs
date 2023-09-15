@@ -8,7 +8,7 @@ using UnityEngine;
 */
 public class PlayerAttacks : MonoBehaviour
 {
-    private GameObject player;
+    protected GameObject player;
     private GameObject[] arrayEnemies;
     protected float speed;    
     protected int damage;    
@@ -95,6 +95,8 @@ public class PlayerAttacks : MonoBehaviour
         } else if(TypeSpellElement.Frost == typeSpellElement){
             enemy.GetComponent<Enemy>().TakeFrostDamage(damage, 5f, 0.25f); // refactor
         } else if(TypeSpellElement.Lightning == typeSpellElement){
+            enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement); 
+        } else if(TypeSpellElement.Wind == typeSpellElement){
             enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement); 
         }
     }

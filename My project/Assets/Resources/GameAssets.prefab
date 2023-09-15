@@ -56,4 +56,6 @@ MonoBehaviour:
   BasicFrostBall: {fileID: 6100710097852927236, guid: 747bbb093ec084e45a4d6cf4dffb043e, type: 3}
   ChainLightning: {fileID: 4083405331441415896, guid: 2e6bb9c873c56ac4a9b425853c877ffe, type: 3}
   WindBlast: {fileID: 8354699860433080342, guid: 998da930b2bf52042b55387ca23bb677, type: 3}
+  Tornado: {fileID: 6141253536623940054, guid: c6496217fcb15b94bb515a489af10e13, type: 3}
+  GreenBall: {fileID: 252950158307327619, guid: ffd28a29e23520e4a90674056862850e, type: 3}
   EnemyAttack: {fileID: 2794326711458975590, guid: 34774334ede90694d9c017ed6e27bcac, type: 3}

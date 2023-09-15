@@ -24,5 +24,8 @@ public class GameAssets : MonoBehaviour
     public GameObject FireBallExplosion;
     public GameObject BasicFrostBall;
     public GameObject ChainLightning;
+    public GameObject WindBlast;
+    public GameObject Tornado;
+    public GameObject GreenBall;
     public GameObject EnemyAttack;
 }

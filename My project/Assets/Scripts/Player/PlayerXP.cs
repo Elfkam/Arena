@@ -12,7 +12,7 @@ public class PlayerXP : MonoBehaviour
     void Start()
     {
         XP = 0;
-        XPForLevel = 1;
+        XPForLevel = 100;
         playerLevel = 1;
         SelectFirstSpell();
     }
