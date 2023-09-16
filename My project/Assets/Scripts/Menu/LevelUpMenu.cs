@@ -8,15 +8,7 @@ using System.Linq;
 public class LevelUpMenu : MonoBehaviour
 {
     public void SelectSpellStartMenu(){
-        List<string> spellsToButtons = new List<string>
-        {
-            "FrostBall_1",
-            "GreenBall_1",
-            "Tornado_1",
-            "WindBlast_1",
-            "ChainLightning_1",
-            "FireBall_1"
-        };
+        List<string> spellsToButtons = SpellsData.GetDefaultSpells();
         SetButtons(spellsToButtons);
     }
     public void LevelUpSetup(){

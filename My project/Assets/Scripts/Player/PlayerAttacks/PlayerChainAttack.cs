@@ -21,12 +21,12 @@ public class PlayerChainAttack : PlayerSmartAttack
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Enemy")){  
             DmgBasedOnType(gm, typeSpellElement);
-            numAdditionalCasts -= 1;          
             if(numAdditionalCasts == 0) {
                 Destroy(gameObject);
             }else{
                 ChooseNewTarget(gm);
             }
+            numAdditionalCasts -= 1;   
         }   
     }
 

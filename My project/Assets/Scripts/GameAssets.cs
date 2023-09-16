@@ -26,6 +26,12 @@ public class GameAssets : MonoBehaviour
     public GameObject ChainLightning;
     public GameObject WindBlast;
     public GameObject Tornado;
-    public GameObject GreenBall;
+    public GameObject FrostNova;
+    public GameObject FrostNovaExplosion;
+    public GameObject LightningBolt;
+    public GameObject PyroBlast;
+    public GameObject FrostRing;
+    public GameObject FrostOrb;
+    public GameObject LightningOrb;
     public GameObject EnemyAttack;
 }

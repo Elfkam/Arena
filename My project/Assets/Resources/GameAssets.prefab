@@ -57,5 +57,11 @@ MonoBehaviour:
   ChainLightning: {fileID: 4083405331441415896, guid: 2e6bb9c873c56ac4a9b425853c877ffe, type: 3}
   WindBlast: {fileID: 8354699860433080342, guid: 998da930b2bf52042b55387ca23bb677, type: 3}
   Tornado: {fileID: 6141253536623940054, guid: c6496217fcb15b94bb515a489af10e13, type: 3}
-  GreenBall: {fileID: 252950158307327619, guid: ffd28a29e23520e4a90674056862850e, type: 3}
+  FrostNova: {fileID: 4557419355658234227, guid: 32b585d497ed08d4f976ed4d053d4f0f, type: 3}
+  FrostNovaExplosion: {fileID: 1228972369261161683, guid: 3734dc4b3246b7a44a10d81eb428b8ae, type: 3}
+  LightningBolt: {fileID: 915409192976423956, guid: 143aecc7df95d2b459a6b453bab9d062, type: 3}
+  PyroBlast: {fileID: 4058355944870019714, guid: e7ece51527bbd134d9409ea0e28690f8, type: 3}
+  FrostRing: {fileID: 3924592594456489566, guid: fb7c41fd659959b4b8c1997d1b840c2a, type: 3}
+  FrostOrb: {fileID: 252950158307327619, guid: ab374a78bb7f87c4d9447d2e324bc018, type: 3}
+  LightningOrb: {fileID: 553533685915904326, guid: 64d425d1c76398547bf6ad4842598369, type: 3}
   EnemyAttack: {fileID: 2794326711458975590, guid: 34774334ede90694d9c017ed6e27bcac, type: 3}

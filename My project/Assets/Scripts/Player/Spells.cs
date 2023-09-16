@@ -37,15 +37,16 @@ public class Spells : MonoBehaviour
         // check if player already knows this spell (diffrent rank)
         for (int i = 0; i < learnedSpells.Count; i++)
         {
-            string spell = learnedSpells[i];
-            string spellToCheck = spell.Substring(0,  spell.Length - 1);
+            string spell = learnedSpells[i]; // FireBall_1
+            string spellToCheck = spell.Substring(0,  spell.Length - 1); 
 
             if(spellToCheck == spellToLearn){
                 //remove old one and add spell with bigger rank
-                removedSpell = spell;
-                learnedSpells.Remove(spell);
-                learnedSpells.Add(newSpell);
+                removedSpell = learnedSpells[i]; 
+                learnedSpells.Remove(learnedSpells[i]); 
+                learnedSpells.Add(newSpell); 
                 spellAdded = true;
+                break;
             }
         }
         // its new spell 
@@ -64,7 +65,7 @@ public class Spells : MonoBehaviour
         availableSpells.Remove(learnedSpellArg);
 
         // check if it is already max rank
-        if(newRank < MAX_RANK_SPELL){
+        if(newRank <= MAX_RANK_SPELL){
             // add new spell with new rank
             availableSpells.Add(learnedSpell + newRank);
         }
