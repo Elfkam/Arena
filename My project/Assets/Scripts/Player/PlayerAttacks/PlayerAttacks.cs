@@ -88,23 +88,23 @@ public class PlayerAttacks : MonoBehaviour
         	transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-
-    protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement){
+    // attacksPos and duration is only used for wind dmg
+    protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement, Vector3 moveDir, float duration){
         if(TypeSpellElement.Fire == typeSpellElement){
-            enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement);
+            enemy.GetComponent<EnemyDebuffs>().TakeFireDamage(damage);
         } else if(TypeSpellElement.Frost == typeSpellElement){
-            enemy.GetComponent<Enemy>().TakeFrostDamage(damage);
+            enemy.GetComponent<EnemyDebuffs>().TakeFrostDamage(damage);
         } else if(TypeSpellElement.Lightning == typeSpellElement){
             enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement); 
         } else if(TypeSpellElement.Wind == typeSpellElement){
-            enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement); 
+            enemy.GetComponent<EnemyDebuffs>().TakeWindDamage(damage, moveDir, duration); 
         }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Enemy")){            
-            DmgBasedOnType(gm, typeSpellElement);
+            DmgBasedOnType(gm, typeSpellElement, new Vector3((gm.transform.position - transform.position).normalized.x, (gm.transform.position - transform.position).normalized.y, 0), 2f);
             Destroy(gameObject);
         }        
     }

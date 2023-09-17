@@ -13,10 +13,8 @@ public abstract class Enemy : MonoBehaviour
     protected int xp;
     protected abstract void Act();
     private Animator animator;
-    protected float speedReduction;
-    protected float debuffDuration;
-    protected float currDebuffDuration;
-    protected bool hasDebuff;
+    private EnemyDebuffs debuffs;
+
 
     public enum State{
         ChasePlayer,
@@ -30,17 +28,17 @@ public abstract class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         animator = transform.GetComponent<Animator>();
-        speedReduction = 0;
+        debuffs = transform.GetComponent<EnemyDebuffs>();
     }  
 
     protected virtual void Update()
     {
-        if(hasDebuff) HandleDebuff();
+        
     }
 
     protected void MoveToPlayer(){
         Vector2 directionToPlayer = (player.transform.position - transform.position).normalized;
-        Vector3 moveDir = new Vector3(directionToPlayer.x, directionToPlayer.y, 0f);
+        Vector3 moveDir = getMoveDirection();
 
         // turn player acording to witch side he is going
         if(directionToPlayer != Vector2.zero){    
@@ -62,65 +60,19 @@ public abstract class Enemy : MonoBehaviour
             // state = State.Death;
             // StartCoroutine(Die());
         }
-    }
-
-    public void TakeFrostDamage(int initialDamage){
-        TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Frost);        
-        debuffDuration = 5f;
-        // debuff is at max stacks
-        if(speedReduction == 1f) return;
-        speedReduction += 0.25f;
-        Color color = new Color(1, 1, 1);;
-        switch(speedReduction){
-            case(0.25f):
-                color = new Color(77f/255f, 241f/255f, 227f/231f);
-                break;
-            case(0.5f):
-                color = new Color(37f/255f, 108f/255f, 147f/231f);
-                break;
-            case(0.75f):
-                color = new Color(35f/255f, 35f/255f, 231f/231f);
-                break;
-            case(1f):
-                color = new Color(14f/255f, 14f/255f, 68f/231f);
-                break;
-            default:
-                break;
-        }
-        SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer spriteRenderer in arr)
-        {
-            spriteRenderer.material.color = color;
-        }
-        hasDebuff = true;
-    }
-
-    public void TakeWindDamage(int initialDamage, float duration, float speedReduction, float distance){
-        TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Wind);
-        debuffDuration = duration;
-        this.speedReduction = speedReduction;
-
-        //Knockback 
-        moveSpeed *= -1;
-    }
-
-    private void HandleDebuff(){
-        currDebuffDuration += Time.deltaTime;
-
-        if(currDebuffDuration > debuffDuration){
-            hasDebuff = false;
-            currDebuffDuration = 0;
-            speedReduction = 0;
-            SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
-            foreach (SpriteRenderer spriteRenderer in arr)
-            {
-                spriteRenderer.material.color = new Color(1, 1, 1);
-            }
-        }
-    }
+    }    
 
     protected float getMoveSpeed(){
-        return moveSpeed * (1 - speedReduction);
+        return moveSpeed * (1 - debuffs.GetSpeedReduction());
+    }
+    protected Vector3 getMoveDirection(){
+        if(debuffs.GetMoveDirection() != Vector3.zero){
+            return debuffs.GetMoveDirection();
+        }else{
+            Vector2 directionToPlayer = (player.transform.position - transform.position).normalized;
+            Vector3 moveDir = new Vector3(directionToPlayer.x, directionToPlayer.y, 0f);
+            return moveDir;
+        }       
     }
 
     private IEnumerator Die()

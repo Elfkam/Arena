@@ -33,5 +33,6 @@ public class GameAssets : MonoBehaviour
     public GameObject FrostRing;
     public GameObject FrostOrb;
     public GameObject LightningOrb;
+    public GameObject FireDebuff;
     public GameObject EnemyAttack;
 }

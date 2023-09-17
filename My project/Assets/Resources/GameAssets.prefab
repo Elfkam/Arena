@@ -64,4 +64,5 @@ MonoBehaviour:
   FrostRing: {fileID: 3924592594456489566, guid: fb7c41fd659959b4b8c1997d1b840c2a, type: 3}
   FrostOrb: {fileID: 252950158307327619, guid: ab374a78bb7f87c4d9447d2e324bc018, type: 3}
   LightningOrb: {fileID: 553533685915904326, guid: 64d425d1c76398547bf6ad4842598369, type: 3}
+  FireDebuff: {fileID: 8989027037416304752, guid: 94ca814ee7d58ef42ab456c98e50d633, type: 3}
   EnemyAttack: {fileID: 2794326711458975590, guid: 34774334ede90694d9c017ed6e27bcac, type: 3}

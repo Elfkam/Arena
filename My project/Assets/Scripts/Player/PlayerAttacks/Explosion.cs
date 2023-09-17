@@ -39,7 +39,7 @@ public class Explosion : PlayerAttacks
     protected override void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Enemy")){            
-            DmgBasedOnType(gm, typeSpellElement);
+            DmgBasedOnType(gm, typeSpellElement, Vector3.zero, 0f);
         }        
     }
 }

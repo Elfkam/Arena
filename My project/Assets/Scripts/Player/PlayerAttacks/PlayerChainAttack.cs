@@ -20,7 +20,7 @@ public class PlayerChainAttack : PlayerSmartAttack
     protected override void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Enemy")){  
-            DmgBasedOnType(gm, typeSpellElement);
+            DmgBasedOnType(gm, typeSpellElement, new Vector3((gm.transform.position - transform.position).normalized.x, (gm.transform.position - transform.position).normalized.y, 0), 0f);
             if(numAdditionalCasts == 0) {
                 Destroy(gameObject);
             }else{

@@ -126,7 +126,7 @@ public static class SpellsData
     public static List<string> GetDefaultSpells(){
        /*  List<string> defaultSpells = new List<string> {"FireBall_1", "FrostBall_1", "ChainLightning_1", "WindBlast_1", "Tornado_1", "FrostNova_1", "LightningBolt_1", 
         "PyroBlast_1", "FrostRing_1", "FrostOrb_1", "LightningOrb_1"}; */
-        List<string> defaultSpells = new List<string> {"FireBall_1", "FrostBall_1", "ChainLightning_1", "WindBlast_1"};
+        List<string> defaultSpells = new List<string> {"WindBlast_1","Tornado_1","FireBall_1", "FrostBall_1", "ChainLightning_1", "WindBlast_1"};
 
         return defaultSpells;
     }

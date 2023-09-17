@@ -33,7 +33,7 @@ public class DamagePopup : MonoBehaviour
         if(PlayerAttacks.TypeSpellElement.Fire == typeSpellElement) return Color.yellow;
         if(PlayerAttacks.TypeSpellElement.Frost == typeSpellElement) return Color.cyan;
         if(PlayerAttacks.TypeSpellElement.Lightning == typeSpellElement) return Color.magenta;
-        if(PlayerAttacks.TypeSpellElement.Wind == typeSpellElement) return Color.grey;
+        if(PlayerAttacks.TypeSpellElement.Wind == typeSpellElement) return Color.white;
         return Color.red;
     }
 
