@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void SpawnUndeadSkeleton(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 50, 2f, 1f, 2, 1); // attackSpeed is based on animations
+        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 5, 2f, 1f, 2, 1); // attackSpeed is based on animations
     } 
     private void SpawnUndeadZombie(Vector3 pos){
         BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 10, 1.75f, 1f, 3, 1);

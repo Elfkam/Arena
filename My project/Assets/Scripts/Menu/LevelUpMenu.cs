@@ -8,7 +8,14 @@ using System.Linq;
 public class LevelUpMenu : MonoBehaviour
 {
     public void SelectSpellStartMenu(){
-        List<string> spellsToButtons = SpellsData.GetDefaultSpells();
+        List<string> spells = SpellsData.GetDefaultSpells();
+        List<string> spellsToButtons = new List<string>();
+        List<int> indexes = GetRandomNumber(0, spells.Count, 3);
+        // Get 3 random spells
+        for (int i = 0; i < indexes.Count; i++)
+        {
+            spellsToButtons.Add(spells[indexes[i]]);
+        }
         SetButtons(spellsToButtons);
     }
     public void LevelUpSetup(){
@@ -45,6 +52,9 @@ public class LevelUpMenu : MonoBehaviour
                 string nameOfSpell = spell.Substring(0,  spell.Length - 2);
                 char rankOfSpell = spell[spell.Length - 1];
 
+                //set frame
+                btn.transform.parent.GetComponent<Outline>().effectColor = GetFrameColor(Int32.Parse(rankOfSpell.ToString()));
+
                 // set img
                 btn.sprite = Resources.Load<Sprite>("Icons/" + nameOfSpell);
 
@@ -67,5 +77,25 @@ public class LevelUpMenu : MonoBehaviour
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(true);
         GameObject.Find("GameHandler/UI/PauseButton").SetActive(true);
         Time.timeScale = 1;
+        GameObject.Find("GameHandler/UI/LevelUpMenu/Row4/Button/Description").GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 1f);
+    }
+
+    public void Reroll()
+    {
+        LevelUpSetup();
+        GameObject.Find("GameHandler/UI/LevelUpMenu/Row4/Button/Description").GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 60f/255f);
+    }
+
+    private Color GetFrameColor(int level){
+        switch (level)
+        {
+            case(4):
+                return new Color(1f, 0f, 165f/255f);
+            case(3):
+            case(2):
+                return new Color(0f, 15f/255f, 1f);
+            default:
+                return new Color(1f, 1f, 1f);
+        }
     }
 }
