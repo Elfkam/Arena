@@ -10,7 +10,6 @@ public abstract class Enemy : MonoBehaviour
     protected State state;
     protected float attackSpeed;
     protected int dmg;
-    protected int xp;
     protected abstract void Act();
     private Animator animator;
     private EnemyDebuffs debuffs;
@@ -56,9 +55,7 @@ public abstract class Enemy : MonoBehaviour
         DamagePopup.Create(transform.position, damage, false, typeSpellElement);
         if(Health <= 0){
             Destroy(gameObject);
-            player.GetComponent<PlayerXP>().setPlayerXP(xp);
-            // state = State.Death;
-            // StartCoroutine(Die());
+            Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);
         }
     }    
 
@@ -74,14 +71,6 @@ public abstract class Enemy : MonoBehaviour
             return moveDir;
         }       
     }
-
-    private IEnumerator Die()
-    {
-        float time = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(time);
-        Destroy(gameObject);       
-    }
-
     public State GetState(){
         return state;
     }

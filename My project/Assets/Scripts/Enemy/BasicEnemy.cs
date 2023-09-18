@@ -18,19 +18,18 @@ public class BasicEnemy : Enemy
         timeToAttack -= Time.deltaTime;
     }
 
-    public static BasicEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, int xp){
+    public static BasicEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg){
         Transform enemyTransform = Instantiate(gm, position, Quaternion.identity).transform;
         BasicEnemy enemy = enemyTransform.GetComponent<BasicEnemy>();
-        enemy.Setup(hp, attackSpeed, speed, dmg, xp);
+        enemy.Setup(hp, attackSpeed, speed, dmg);
         return enemy;
     }
 
-    private void Setup(int hp, float attackSpeed, float speed, int dmg, int xp){
+    private void Setup(int hp, float attackSpeed, float speed, int dmg){
         base.Health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;
-        base.xp = xp;
         timeToAttack = 0;
     }
 

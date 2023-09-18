@@ -35,4 +35,5 @@ public class GameAssets : MonoBehaviour
     public GameObject LightningOrb;
     public GameObject FireDebuff;
     public GameObject EnemyAttack;
+    public GameObject XP;
 }

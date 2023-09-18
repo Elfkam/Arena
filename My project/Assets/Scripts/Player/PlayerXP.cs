@@ -20,7 +20,7 @@ public class PlayerXP : MonoBehaviour
         XP += amount;
         if(XP >= XPForLevel){
             XP = XPForLevel - XP;
-            XPForLevel += 1;
+            XPForLevel += 5;
             playerLevel += 1;
             if(CheckIfPlayerCanLevelUp()) LevelUp();
         }

@@ -57,4 +57,12 @@ public class Player : MonoBehaviour
             // TODO: gameOver
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collider2D){
+        GameObject gm = collider2D.gameObject;
+        if(gm.CompareTag("XP")){            
+            gameObject.GetComponent<PlayerXP>().setPlayerXP(1);
+            Destroy(gm);
+        }        
+    }
 }

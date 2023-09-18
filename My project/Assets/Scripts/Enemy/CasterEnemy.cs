@@ -18,19 +18,18 @@ public class CasterEnemy : Enemy
         Act();
     }
 
-    public static CasterEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float attackRange, int xp){
+    public static CasterEnemy Create(Vector3 position, GameObject gm, int hp, float attackSpeed, float speed, int dmg, float attackRange){
         Transform enemyTransform = Instantiate(gm, position, Quaternion.identity).transform;
         CasterEnemy enemy = enemyTransform.GetComponent<CasterEnemy>();
-        enemy.Setup(hp, attackSpeed, speed, dmg, attackRange, xp);
+        enemy.Setup(hp, attackSpeed, speed, dmg, attackRange);
         return enemy;
     }
 
-    private void Setup(int hp, float attackSpeed, float speed, int dmg, float attackRangeInput, int xp){
+    private void Setup(int hp, float attackSpeed, float speed, int dmg, float attackRangeInput){
         base.Health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;
-        base.xp = xp;
         timeToAttack = attackSpeed;
         attackRange = attackRangeInput;
     }
