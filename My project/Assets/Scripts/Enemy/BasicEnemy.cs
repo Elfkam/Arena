@@ -26,7 +26,7 @@ public class BasicEnemy : Enemy
     }
 
     private void Setup(int hp, float attackSpeed, float speed, int dmg){
-        base.Health = hp;
+        base.health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;

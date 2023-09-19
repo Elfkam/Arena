@@ -67,3 +67,4 @@ MonoBehaviour:
   FireDebuff: {fileID: 8989027037416304752, guid: 94ca814ee7d58ef42ab456c98e50d633, type: 3}
   EnemyAttack: {fileID: 2794326711458975590, guid: 34774334ede90694d9c017ed6e27bcac, type: 3}
   XP: {fileID: 35497129430165896, guid: 03981832f8c3fd54bbf946830e651288, type: 3}
+  Row: {fileID: 5937873127082841459, guid: 12037aab5bb984d4fa177d82438cf393, type: 3}

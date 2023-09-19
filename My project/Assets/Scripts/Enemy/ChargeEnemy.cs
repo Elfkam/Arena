@@ -34,7 +34,7 @@ public class ChargeEnemy : Enemy
     }
 
     private void Setup(int hp, float attackSpeed, float speed, int dmg, float chargeRangeInput){
-        base.Health = hp;
+        base.health = hp;
         base.attackSpeed = attackSpeed;
         base.moveSpeed = speed;
         base.dmg = dmg;

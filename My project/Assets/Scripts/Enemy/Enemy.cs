@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     protected float moveSpeed;
     protected Player player;
-    protected int Health;
+    protected int health;
     protected State state;
     protected float attackSpeed;
     protected int dmg;
@@ -51,9 +51,9 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement){
-        Health -= damage;
+        health -= damage;
         DamagePopup.Create(transform.position, damage, false, typeSpellElement);
-        if(Health <= 0){
+        if(health <= 0){
             Destroy(gameObject);
             Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);
         }

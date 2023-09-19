@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
                 SpawnUndeadZombie(pos);
                 return;
             case < 95:
-                SpawnUndeadZombie(pos);
+                SpawnUndeadVampire(pos);
                 return;
             default:
                 SpawnUndeadBlackKnight(pos);
