@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    [SerializeField] private EndMenu endMenu;
     [SerializeField] private Joystick joystick;
     [SerializeField] private float moveSpeed;
     [SerializeField] private HealthBar healthBar;
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
         Health -= damage;
         healthBar.SetHealth(Health);
         if(Health <= 0){
-            // TODO: gameOver
+            endMenu.SetActiveEndMenu(false);
         }
     }
 

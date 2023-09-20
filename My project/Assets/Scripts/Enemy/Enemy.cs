@@ -14,7 +14,6 @@ public abstract class Enemy : MonoBehaviour
     private Animator animator;
     private EnemyDebuffs debuffs;
 
-
     public enum State{
         ChasePlayer,
         Attack,
@@ -50,9 +49,10 @@ public abstract class Enemy : MonoBehaviour
         transform.position += moveDir * getMoveSpeed() * Time.deltaTime;
     }
 
-    public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement){
+    public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement, GameObject spell){
         health -= damage;
         DamagePopup.Create(transform.position, damage, false, typeSpellElement);
+        player.GetComponent<DamageDone>().AddDamage(spell.name.ToString().Replace("(Clone)", ""), damage);
         if(health <= 0){
             Destroy(gameObject);
             Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);

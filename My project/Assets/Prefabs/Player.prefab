@@ -764,6 +764,7 @@ GameObject:
   - component: {fileID: 8129847480847540221}
   - component: {fileID: -7141626001947200571}
   - component: {fileID: 5586240561765894010}
+  - component: {fileID: -6883583165659711716}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -833,6 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1786d1cb6ac1bd47939ff60bf3f4c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endMenu: {fileID: 0}
   joystick: {fileID: 0}
   moveSpeed: 0
   healthBar: {fileID: 0}
@@ -874,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472549aff591cb142a78501b002e0a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelUpMenu: {fileID: 0}
+  levelUpMenu: {fileID: 0}
 --- !u!70 &8129847480847540221
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -949,6 +951,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa0c277594469949acdc2ad36f2eccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6883583165659711716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035770797346845564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ffac27ac2d19e14e8ba3b44c29f0a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table: {fileID: 0}
 --- !u!1 &7047918252242235429
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class PlayerStaticPointAttack : PlayerAttacks
     protected override void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Enemy")){            
-            DmgBasedOnType(gm, typeSpellElement, new Vector3((transform.position - gm.transform.position).normalized.x, (transform.position - gm.transform.position).normalized.y, 0), timeUntilDestroy);
+            DmgBasedOnType(gm, typeSpellElement, new Vector3((transform.position - gm.transform.position).normalized.x, (transform.position - gm.transform.position).normalized.y, 0), timeUntilDestroy, transform.gameObject);
             enemiesInCollision.Add(gm, 1f);
         }        
     }
@@ -49,7 +49,7 @@ public class PlayerStaticPointAttack : PlayerAttacks
         if(gm.CompareTag("Enemy")){        
             enemiesInCollision[gm] -= Time.deltaTime;    
             if(enemiesInCollision[gm] < 0){
-                DmgBasedOnType(gm, typeSpellElement, new Vector3((transform.position - gm.transform.position).normalized.x, (transform.position - gm.transform.position).normalized.y, 0), timeUntilDestroy);
+                DmgBasedOnType(gm, typeSpellElement, new Vector3((transform.position - gm.transform.position).normalized.x, (transform.position - gm.transform.position).normalized.y, 0), timeUntilDestroy, transform.gameObject);
                 enemiesInCollision[gm] = 1f;
             }
         }

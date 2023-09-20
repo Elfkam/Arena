@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerXP : MonoBehaviour
 {
-    [SerializeField] GameObject LevelUpMenu;
+    [SerializeField] LevelUpMenu levelUpMenu;
     private int XP;
     private int XPForLevel;
     private int playerLevel;
@@ -45,12 +45,7 @@ public class PlayerXP : MonoBehaviour
     }
 
     private void SelectFirstSpell(){
-        foreach (GameObject item in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
-        {
-            if(item == LevelUpMenu){
-                item.GetComponent<LevelUpMenu>().SelectSpellStartMenu();
-            }
-        }
+        levelUpMenu.SelectSpellStartMenu();
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);
         GameObject.Find("GameHandler/UI/PauseButton").SetActive(false);
@@ -58,12 +53,7 @@ public class PlayerXP : MonoBehaviour
 
     }
     private void LevelUp(){
-        foreach (GameObject item in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
-        {
-            if(item == LevelUpMenu){
-                item.GetComponent<LevelUpMenu>().LevelUpSetup();
-            }
-        }
+        levelUpMenu.LevelUpSetup();
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);
         GameObject.Find("GameHandler/UI/PauseButton").SetActive(false);

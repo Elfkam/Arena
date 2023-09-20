@@ -32,8 +32,8 @@ public class EnemyDebuffs : MonoBehaviour
         HandleDebuff();        
     }
 
-    public void TakeFrostDamage(int initialDamage){
-        enemy.TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Frost);
+    public void TakeFrostDamage(int initialDamage, GameObject spell){
+        enemy.TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Frost, spell);
         debuffs[PlayerAttacks.TypeSpellElement.Frost] = 0;
 
         // debuff is at max stacks
@@ -63,23 +63,23 @@ public class EnemyDebuffs : MonoBehaviour
         }
     }
 
-    public void TakeFireDamage(int initialDamage){
-        enemy.TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Fire);
+    public void TakeFireDamage(int initialDamage, GameObject spell){
+        enemy.TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Fire, spell);
         // check if enemy has already fire debuff
         if(gameObject.transform.childCount != 3){
             debuffs[PlayerAttacks.TypeSpellElement.Fire] = 0;
             fireDmgDot = initialDamage / 4;
             GameObject fire = Instantiate(GameAssets.i.FireDebuff, transform.position, Quaternion.identity);
             fire.transform.parent = gameObject.transform;
-            fireDot = StartCoroutine(FireDmgTick());       
+            fireDot = StartCoroutine(FireDmgTick(spell));       
         }else{
             debuffs[PlayerAttacks.TypeSpellElement.Fire] = 0;
             fireDmgDot = initialDamage / 4;
         }      
     }
 
-    public void TakeWindDamage(int initialDamage, Vector3 moveDirection, float duration){
-        enemy.TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Wind);
+    public void TakeWindDamage(int initialDamage, Vector3 moveDirection, float duration, GameObject spell){
+        enemy.TakeDamage(initialDamage, PlayerAttacks.TypeSpellElement.Wind, spell);
         debuffs[PlayerAttacks.TypeSpellElement.Wind] = 0;
         this.moveDirection = moveDirection;  
         windDuration = duration;
@@ -122,10 +122,10 @@ public class EnemyDebuffs : MonoBehaviour
     public Vector3 GetMoveDirection(){
         return moveDirection;
     }
-    IEnumerator FireDmgTick() {        
+    IEnumerator FireDmgTick(GameObject spell) {        
         while(true) {
             yield return new WaitForSeconds(1);
-            enemy.TakeDamage(fireDmgDot, PlayerAttacks.TypeSpellElement.Fire);
+            enemy.TakeDamage(fireDmgDot, PlayerAttacks.TypeSpellElement.Fire, spell);
         }         
     }
 }

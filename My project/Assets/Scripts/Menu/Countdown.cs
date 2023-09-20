@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Countdown : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI timer;
+    [SerializeField] private TextMeshProUGUI timer;
+    [SerializeField] private EndMenu endMenu;
     private float timeLeft;
     private void Start()
     {
@@ -17,7 +17,7 @@ public class Countdown : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
         if(timeLeft < 0){
-            // Player Win
+            endMenu.SetActiveEndMenu(true);
         }
         UpdateText();
     }

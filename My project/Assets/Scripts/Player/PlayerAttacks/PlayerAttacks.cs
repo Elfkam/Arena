@@ -88,23 +88,22 @@ public class PlayerAttacks : MonoBehaviour
         	transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-    // attacksPos and duration is only used for wind dmg
-    protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement, Vector3 moveDir, float duration){
+    protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement, Vector3 moveDir, float duration, GameObject spell){
         if(TypeSpellElement.Fire == typeSpellElement){
-            enemy.GetComponent<EnemyDebuffs>().TakeFireDamage(damage);
+            enemy.GetComponent<EnemyDebuffs>().TakeFireDamage(damage, spell);
         } else if(TypeSpellElement.Frost == typeSpellElement){
-            enemy.GetComponent<EnemyDebuffs>().TakeFrostDamage(damage);
+            enemy.GetComponent<EnemyDebuffs>().TakeFrostDamage(damage, spell);
         } else if(TypeSpellElement.Lightning == typeSpellElement){
-            enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement); 
+            enemy.GetComponent<Enemy>().TakeDamage(damage, typeSpellElement, spell); 
         } else if(TypeSpellElement.Wind == typeSpellElement){
-            enemy.GetComponent<EnemyDebuffs>().TakeWindDamage(damage, moveDir, duration); 
+            enemy.GetComponent<EnemyDebuffs>().TakeWindDamage(damage, moveDir, duration, spell); 
         }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
-        if(gm.CompareTag("Enemy")){            
-            DmgBasedOnType(gm, typeSpellElement, new Vector3((gm.transform.position - transform.position).normalized.x, (gm.transform.position - transform.position).normalized.y, 0), 2f);
+        if(gm.CompareTag("Enemy")){      
+            DmgBasedOnType(gm, typeSpellElement, new Vector3((gm.transform.position - transform.position).normalized.x, (gm.transform.position - transform.position).normalized.y, 0), 2f, transform.gameObject);
             Destroy(gameObject);
         }        
     }

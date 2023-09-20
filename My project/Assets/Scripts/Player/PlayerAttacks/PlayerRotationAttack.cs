@@ -41,7 +41,7 @@ public class PlayerRotationAttack : PlayerAttacks
     protected override void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Enemy")){            
-            DmgBasedOnType(gm, typeSpellElement, Vector3.zero, 0f);
+            DmgBasedOnType(gm, typeSpellElement, Vector3.zero, 0f, transform.gameObject);
         }        
     }
 }
