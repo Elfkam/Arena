@@ -11,7 +11,7 @@ public class EndMenu : MonoBehaviour
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);
         GameObject.Find("GameHandler/UI/PauseButton").SetActive(false);
-        HeaderDesc.GetComponent<TextMeshProUGUI>().text = playerWon ? "YOU WIN!" : "GAME OVER";
+        HeaderDesc.GetComponent<TextMeshProUGUI>().text = playerWon ? "<color=yellow>YOU WIN!" : "<color=red>GAME OVER";
         GameObject.FindGameObjectWithTag("Player").GetComponent<DamageDone>().AddRows();
         gameObject.SetActive(true);
         Time.timeScale = 0;      

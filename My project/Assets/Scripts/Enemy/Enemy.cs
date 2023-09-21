@@ -49,10 +49,10 @@ public abstract class Enemy : MonoBehaviour
         transform.position += moveDir * getMoveSpeed() * Time.deltaTime;
     }
 
-    public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement, GameObject spell){
+    public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement, string spell){
         health -= damage;
         DamagePopup.Create(transform.position, damage, false, typeSpellElement);
-        player.GetComponent<DamageDone>().AddDamage(spell.name.ToString().Replace("(Clone)", ""), damage);
+        player.GetComponent<DamageDone>().AddDamage(spell.Replace("(Clone)", ""), damage);
         if(health <= 0){
             Destroy(gameObject);
             Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);

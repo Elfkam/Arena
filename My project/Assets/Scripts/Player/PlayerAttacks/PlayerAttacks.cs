@@ -88,7 +88,7 @@ public class PlayerAttacks : MonoBehaviour
         	transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-    protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement, Vector3 moveDir, float duration, GameObject spell){
+    protected void DmgBasedOnType(GameObject enemy, TypeSpellElement typeSpellElement, Vector3 moveDir, float duration, string spell){
         if(TypeSpellElement.Fire == typeSpellElement){
             enemy.GetComponent<EnemyDebuffs>().TakeFireDamage(damage, spell);
         } else if(TypeSpellElement.Frost == typeSpellElement){
@@ -103,7 +103,7 @@ public class PlayerAttacks : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
         if(gm.CompareTag("Enemy")){      
-            DmgBasedOnType(gm, typeSpellElement, new Vector3((gm.transform.position - transform.position).normalized.x, (gm.transform.position - transform.position).normalized.y, 0), 2f, transform.gameObject);
+            DmgBasedOnType(gm, typeSpellElement, new Vector3((gm.transform.position - transform.position).normalized.x, (gm.transform.position - transform.position).normalized.y, 0), 2f, transform.gameObject.name);
             Destroy(gameObject);
         }        
     }

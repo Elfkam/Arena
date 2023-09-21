@@ -24,9 +24,9 @@ public class DamageDone : MonoBehaviour
         {
             if(tableRow.Value == 0) continue;
             GameObject row = Instantiate(GameAssets.i.Row, transform.position, Quaternion.identity);            
-            row.transform.position = new Vector3(0, 0, 0);
             row.transform.SetParent(table.transform);
             row.transform.localScale = new Vector3(1,1,0);
+            row.transform.localPosition = new Vector3(0,0,0);
 
             for (int j = 0; j < row.transform.childCount; j++)
             {
@@ -48,6 +48,11 @@ public class DamageDone : MonoBehaviour
     }
 
     public void AddDamage(string spell, int damage){
+        // replace prefabs name with they original prefab
+        spell = spell == "BasicFireBall" ? "FireBall" : spell;
+        spell = spell == "BasicFrostBall" ? "FrostBall" : spell;
+        spell = spell == "FrostNovaExplosion" ? "FrostNova" : spell;
+        spell = spell == "FireBallExplosion" ? "FireBall" : spell;
         dmgTable[spell] += damage;
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 396514764364718924}
   - component: {fileID: 2091103651124084031}
   m_Layer: 0
-  m_Name: FIreDebuff
+  m_Name: FireDebuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
