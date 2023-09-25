@@ -18,6 +18,7 @@ public class EndMenu : MonoBehaviour
     }
     public void MainMenu()
     {
+        FindAnyObjectByType<AudioManager>().Play("BtnClick");
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }

@@ -82,6 +82,7 @@ public class LevelUpMenu : MonoBehaviour
 
     public void Reroll()
     {
+        FindAnyObjectByType<AudioManager>().Play("BtnClick");
         LevelUpSetup();
         GameObject.Find("GameHandler/UI/LevelUpMenu/Row4/Button/Description").GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 60f/255f);
     }

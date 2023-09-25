@@ -53,6 +53,7 @@ public class PlayerXP : MonoBehaviour
 
     }
     private void LevelUp(){
+        FindAnyObjectByType<AudioManager>().Play("LevelUp");
         levelUpMenu.LevelUpSetup();
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);

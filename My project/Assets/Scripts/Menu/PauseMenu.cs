@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 {
     public void GiveUp()
     {
+        FindAnyObjectByType<AudioManager>().Play("BtnClick");
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(true);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(true);
         gameObject.SetActive(false);
@@ -17,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void PauseMenuButton(){
+        FindAnyObjectByType<AudioManager>().Play("BtnClick");
         SetButtons(GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().GetLearnedSpells());
         gameObject.SetActive(true);
         PauseGame();
@@ -46,6 +48,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void ResumeGame(){
+        FindAnyObjectByType<AudioManager>().Play("BtnClick");
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(true);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(true);
         gameObject.SetActive(false);
