@@ -36,5 +36,6 @@ public class GameAssets : MonoBehaviour
     public GameObject FireDebuff;
     public GameObject EnemyAttack;
     public GameObject XP;
+    public GameObject Heart;
     public GameObject Row;
 }

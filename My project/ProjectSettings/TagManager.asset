@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - XP
+  - HPHeart
   layers:
   - Default
   - TransparentFX

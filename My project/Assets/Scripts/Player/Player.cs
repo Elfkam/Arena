@@ -11,12 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     private Rigidbody2D playerRigidBody2d;
     private bool isWalking;
+    private int MAX_HEALTH = 100;
 
     private int Health;
 
     private void Awake() {
         playerRigidBody2d = GetComponent<Rigidbody2D>();
-        Health = 100;
+        Health = MAX_HEALTH;
         healthBar.SetMaxHealth(Health);
     }
     private void Update()
@@ -64,6 +65,11 @@ public class Player : MonoBehaviour
         if(gm.CompareTag("XP")){            
             gameObject.GetComponent<PlayerXP>().setPlayerXP(1);
             Destroy(gm);
-        }        
+        }
+        if(gm.CompareTag("HPHeart")){        
+            Health += 10;
+            if(Health > MAX_HEALTH) Health = MAX_HEALTH;
+            Destroy(gm);
+        }     
     }
 }

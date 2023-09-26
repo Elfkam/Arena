@@ -54,8 +54,10 @@ public abstract class Enemy : MonoBehaviour
         DamagePopup.Create(transform.position, damage, false, typeSpellElement);
         player.GetComponent<DamageDone>().AddDamage(spell.Replace("(Clone)", ""), damage);
         if(health <= 0){
-            Destroy(gameObject);
-            Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);
+            Destroy(gameObject);            
+            int randomNum = Random.Range(0, 8);
+            if(randomNum == 7) Instantiate(GameAssets.i.Heart, transform.position, Quaternion.identity);
+            else Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);
         }
     }    
 

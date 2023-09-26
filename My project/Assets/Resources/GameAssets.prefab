@@ -50,7 +50,7 @@ MonoBehaviour:
   UndeadZombie: {fileID: 1000010607234278, guid: bdb37e6f2f5ef4cc18c1fd624ccf3398, type: 3}
   UndeadVampire: {fileID: 1000013612721936, guid: 64c849a72fb0a4002a646cdc40cb55f0, type: 3}
   UndeadBlackKnight: {fileID: 1000011201877128, guid: 72954a48f9bc94edd96576c258be84e4, type: 3}
-  BasicFireBall: {fileID: 2974602475713550252, guid: ec66105283ee0dc4195baf32499eca2d, type: 3}
+  BasicFireBall: {fileID: 5333995070455436766, guid: 12bca21b0d3d31d4990410e13df3d40f, type: 3}
   FireBall: {fileID: 7556177573439570286, guid: 0031a2b31b6de69478e7fa7f5e23c912, type: 3}
   FireBallExplosion: {fileID: 8866501161851607396, guid: 2014b36e10aa14c4698b866753464fd9, type: 3}
   BasicFrostBall: {fileID: 6100710097852927236, guid: 747bbb093ec084e45a4d6cf4dffb043e, type: 3}
@@ -67,4 +67,5 @@ MonoBehaviour:
   FireDebuff: {fileID: 8989027037416304752, guid: 94ca814ee7d58ef42ab456c98e50d633, type: 3}
   EnemyAttack: {fileID: 2794326711458975590, guid: 34774334ede90694d9c017ed6e27bcac, type: 3}
   XP: {fileID: 35497129430165896, guid: 03981832f8c3fd54bbf946830e651288, type: 3}
+  Heart: {fileID: 6144203658188765464, guid: 9eaccb2f86962494d87b2a5c093cddcb, type: 3}
   Row: {fileID: 5937873127082841459, guid: 12037aab5bb984d4fa177d82438cf393, type: 3}
