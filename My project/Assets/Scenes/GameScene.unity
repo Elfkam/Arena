@@ -8205,6 +8205,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1792016074}
     - target: {fileID: -6897302427548482680, guid: 8e815edd4848ee345800551398650078, type: 3}
+      propertyPath: dmgEffect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6897302427548482680, guid: 8e815edd4848ee345800551398650078, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2143770759}

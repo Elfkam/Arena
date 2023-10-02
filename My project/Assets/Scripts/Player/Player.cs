@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage){
         Health -= damage;
         healthBar.SetHealth(Health);
+        gameObject.GetComponent<DamageEffect>().ShowDamageEffect();
         if(Health <= 0){
             endMenu.SetActiveEndMenu(false);
         }
