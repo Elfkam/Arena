@@ -1,24 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ShowXP : MonoBehaviour
 {
-    private PlayerXP playerXP;
-    private TextMeshProUGUI textMesh;
-    private void Awake()
-    {
-        playerXP = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerXP>();
-        textMesh = transform.GetComponent<TextMeshProUGUI>();
+    public Slider slider;
+
+    public void SetMaxXP(int xp){
+        slider.maxValue = xp;
+        slider.value = 0;
     }
 
-    private void Update()
-    {
-        setXP();
-    }
-
-    private void setXP(){
-        textMesh.SetText(playerXP.getPlayerXP().ToString() + " / " + playerXP.getPlayerXPForLevel().ToString());
+    public void SetXP(int xp){
+        slider.value = xp;
     }
 }

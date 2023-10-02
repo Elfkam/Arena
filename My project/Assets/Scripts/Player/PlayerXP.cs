@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerXP : MonoBehaviour
 {
     [SerializeField] LevelUpMenu levelUpMenu;
+    [SerializeField] private ShowXP xpBar;
     private int XP;
     private int XPForLevel;
     private int playerLevel;
@@ -15,9 +16,11 @@ public class PlayerXP : MonoBehaviour
         XPForLevel = 5;
         playerLevel = 1;
         SelectFirstSpell();
+        xpBar.SetMaxXP(XPForLevel);
     }
     public void setPlayerXP(int amount){
         XP += amount;
+        xpBar.SetXP(XP);
         if(XP >= XPForLevel){
             XP = XPForLevel - XP;
             XPForLevel += 5;
@@ -53,6 +56,7 @@ public class PlayerXP : MonoBehaviour
 
     }
     private void LevelUp(){
+        xpBar.SetMaxXP(XPForLevel);
         FindAnyObjectByType<AudioManager>().Play("LevelUp");
         levelUpMenu.LevelUpSetup();
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);

@@ -877,6 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUpMenu: {fileID: 0}
+  xpBar: {fileID: 0}
 --- !u!70 &8129847480847540221
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
