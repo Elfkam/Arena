@@ -54,11 +54,20 @@ public abstract class Enemy : MonoBehaviour
         DamagePopup.Create(transform.position, damage, false, typeSpellElement);
         player.GetComponent<DamageDone>().AddDamage(spell.Replace("(Clone)", ""), damage);
         if(health <= 0){
-            Destroy(gameObject);            
-            int randomNum = Random.Range(0, 8);
-            if(randomNum == 7) Instantiate(GameAssets.i.Heart, transform.position, Quaternion.identity);
+            Die();
+        }
+    }
+
+    private void Die(){
+        Destroy(gameObject);
+        GameObject [] hearts = GameObject.FindGameObjectsWithTag("HPHeart");
+        // only 2 hphearts can be at the same time
+        if(hearts.Length < 2 ){
+            int randomNum = Random.Range(0, 10);
+            if(randomNum == 9) Instantiate(GameAssets.i.Heart, transform.position, Quaternion.identity);
             else Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);
         }
+        else Instantiate(GameAssets.i.XP, transform.position, Quaternion.identity);
     }    
 
     protected float getMoveSpeed(){

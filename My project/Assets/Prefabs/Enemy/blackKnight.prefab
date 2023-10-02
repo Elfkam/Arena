@@ -1021,7 +1021,7 @@ Transform:
   - {fileID: 4000012869604522}
   - {fileID: 4000012507126614}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95000011861059334
 Animator:
@@ -1088,8 +1088,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 15.776992, y: 185.89355}
-  m_Size: {x: 282.46378, y: 381.24118}
+  m_Offset: {x: 15.776992, y: 205.56676}
+  m_Size: {x: 282.46378, y: 420.58768}
   m_Direction: 0
 --- !u!50 &7444630869930536839
 Rigidbody2D:

@@ -67,8 +67,9 @@ public class Player : MonoBehaviour
             Destroy(gm);
         }
         if(gm.CompareTag("HPHeart")){        
-            Health += 10;
+            Health += 50;
             if(Health > MAX_HEALTH) Health = MAX_HEALTH;
+            healthBar.SetHealth(Health);
             Destroy(gm);
         }     
     }
