@@ -85,5 +85,4 @@ public abstract class Enemy : MonoBehaviour
     public State GetState(){
         return state;
     }
-    
 }

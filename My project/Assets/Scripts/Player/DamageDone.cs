@@ -16,7 +16,6 @@ public class DamageDone : MonoBehaviour
         {
             dmgTable.Add(keys[i].Substring(0, keys[i].Length - 2), 0);
         }
-        AddRows();
     }
 
     public void AddRows(){

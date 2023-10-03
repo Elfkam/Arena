@@ -9,12 +9,12 @@ public class CameraAspectRatioScaler : MonoBehaviour {
     [HideInInspector]
     public Vector3 OriginPosition;
 
-    void Start () {
+    private void Start () {
         OriginPosition = transform.position;
     }
 	
 
-	void Update () {
+	private void Update () {
 
         if (ReferenceResolution.y == 0 || ReferenceResolution.x == 0)
             return;
