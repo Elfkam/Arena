@@ -46,12 +46,14 @@ public class PlayerStaticPointAttack : PlayerAttacks
     }
     protected void OnTriggerStay2D(Collider2D collider2D){
         GameObject gm = collider2D.gameObject;
-        if(gm.CompareTag("Enemy")){        
-            enemiesInCollision[gm] -= Time.deltaTime;    
-            if(enemiesInCollision[gm] < 0){
-                DmgBasedOnType(gm, typeSpellElement, new Vector3((transform.position - gm.transform.position).normalized.x, (transform.position - gm.transform.position).normalized.y, 0), timeUntilDestroy, transform.gameObject.name);
-                enemiesInCollision[gm] = 1f;
-            }
+        if(gm.CompareTag("Enemy")){
+            if(enemiesInCollision.ContainsKey(gm)){
+                enemiesInCollision[gm] -= Time.deltaTime;    
+                if(enemiesInCollision[gm] < 0){
+                    DmgBasedOnType(gm, typeSpellElement, new Vector3((transform.position - gm.transform.position).normalized.x, (transform.position - gm.transform.position).normalized.y, 0), timeUntilDestroy, transform.gameObject.name);
+                    enemiesInCollision[gm] = 1f;
+                }
+            }            
         }
     }
     protected void OnTriggerExit2D(Collider2D collider2D){

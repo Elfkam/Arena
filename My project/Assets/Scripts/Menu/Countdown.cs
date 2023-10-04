@@ -10,7 +10,7 @@ public class Countdown : MonoBehaviour
     private float timeLeft;
     private void Start()
     {
-        timeLeft = 300;
+        timeLeft = 3;
     }
 
     private void Update()
@@ -18,6 +18,7 @@ public class Countdown : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if(timeLeft < 0){
             endMenu.SetActiveEndMenu(true);
+            timeLeft = float.PositiveInfinity;
         }
         UpdateText();
     }
