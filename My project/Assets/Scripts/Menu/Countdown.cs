@@ -8,19 +8,23 @@ public class Countdown : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timer;
     [SerializeField] private EndMenu endMenu;
     private float timeLeft;
+    private bool isEndMenuActive;
     private void Start()
     {
-        timeLeft = 3;
+        timeLeft = 300;
+        isEndMenuActive = false;
     }
 
     private void Update()
     {
-        timeLeft -= Time.deltaTime;
-        if(timeLeft < 0){
-            endMenu.SetActiveEndMenu(true);
-            timeLeft = float.PositiveInfinity;
+        if(!isEndMenuActive){
+            timeLeft -= Time.deltaTime;
+            if(timeLeft < 0){
+                endMenu.SetActiveEndMenu(true);
+                isEndMenuActive = true;
+            }
+            UpdateText();
         }
-        UpdateText();
     }
 
     private void UpdateText(){
