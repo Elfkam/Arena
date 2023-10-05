@@ -11,7 +11,7 @@ public class Countdown : MonoBehaviour
     private bool isEndMenuActive;
     private void Start()
     {
-        timeLeft = 300;
+        timeLeft = 3;
         isEndMenuActive = false;
     }
 

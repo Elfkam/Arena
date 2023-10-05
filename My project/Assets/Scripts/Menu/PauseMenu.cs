@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +22,7 @@ public class PauseMenu : MonoBehaviour
         FindAnyObjectByType<AudioManager>().Play("BtnClick");
         SetButtons(GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().GetLearnedSpells());
         gameObject.SetActive(true);
+        SetUpHeader();
         PauseGame();
     }
 
@@ -39,6 +41,26 @@ public class PauseMenu : MonoBehaviour
             }
             i++;
         }
+    }
+
+    private void SetUpHeader(){
+        GameObject gm = GameObject.Find("GameHandler/UI/PauseMenu/Header/Description");
+        switch(GameData.GetDiffLevel()){
+            case 1 :
+                gm.GetComponent<TextMeshProUGUI>().text = "PAUSED\n\n<color=\"green\">- EASY -";
+                return;
+            case 2 :
+                gm.GetComponent<TextMeshProUGUI>().text = "PAUSED\n\n<color=\"orange\">- MEDIUM -";
+                return;
+            case 3 :
+                gm.GetComponent<TextMeshProUGUI>().text = "PAUSED\n\n<color=\"red\">- HARD -";
+                return;
+            case 4 :
+                gm.GetComponent<TextMeshProUGUI>().text = "PAUSED\n\n<color=\"purple\">- IMPOSSIBLE -";
+                return;
+            default :
+                return;
+        } 
     }
 
     public void PauseGame(){

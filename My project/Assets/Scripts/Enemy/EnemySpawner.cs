@@ -83,15 +83,15 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void IncreaseSpawnCount(){       
-        timeUntilSpawnCountIncrease += Time.deltaTime; 
-        if(timeUntilSpawnCountIncrease > 30){
+        timeUntilSpawnCountIncrease += Time.deltaTime;
+        if(timeUntilSpawnCountIncrease > 30 / GameData.GetDiffLevel()){
             timeUntilSpawnCountIncrease = 0;
             spawnCount += 5;
         }        
     }
     private void IncreaseHealthBonus(){
         timeUntilHealthIncrease += Time.deltaTime;    
-        if(timeUntilHealthIncrease > 60){
+        if(timeUntilHealthIncrease > 60 / GameData.GetDiffLevel()){
             timeUntilHealthIncrease = 0;
             EnemyHealthBonus += 1;
         }        

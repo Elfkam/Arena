@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    [SerializeField] public GameObject DifficultyMenu;
+    public void SelectDiff()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        gameObject.SetActive(false);
+        DifficultyMenu.SetActive(true);
     }
-
     public void QuitGame()
     {
         Application.Quit();
