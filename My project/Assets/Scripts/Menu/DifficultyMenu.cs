@@ -12,46 +12,45 @@ public class DifficultyMenu : MonoBehaviour
     [SerializeField] private Button hard;
     [SerializeField] private Button impossible;
 
-    private void Awake()
-    {
+    public void SetActive(){
         int diffLevel = GameData.GetDiffLevel();
-        Debug.Log(diffLevel);
         switch(diffLevel){
-            case 0 :
+            case 1 :
                 // unlock only easy diff
                 easy.interactable = true;                
                 DisableButton(medium);
                 DisableButton(hard);
                 DisableButton(impossible);
-                return;
-            case 1 :
+                break;
+            case 2 :
                 // unlock easy and medium diff
                 easy.interactable = true;
                 medium.interactable = true;
                 DisableButton(hard);
                 DisableButton(impossible);
-                return;
-            case 2 :
+                break;
+            case 3 :
                 // unlock easy, medium and hard diff
                 easy.interactable = true;                
                 medium.interactable = true;
                 hard.interactable = true;
                 DisableButton(impossible);
-                return;
-            case 3 :
+                break;
+            case 4 :
                 // unlock all diff
                 easy.interactable = true;
                 hard.interactable = true;
                 medium.interactable = true;
                 impossible.interactable = true;
-                return;
+                break;
             default:
                 easy.interactable = true;                
                 DisableButton(medium);
                 DisableButton(hard);
                 DisableButton(impossible);
-                return;
+                break;
         }
+        gameObject.SetActive(true);
     }
 
     private void DisableButton(Button btn){

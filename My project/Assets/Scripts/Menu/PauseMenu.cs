@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     public void GiveUp()
     {
         FindAnyObjectByType<AudioManager>().Play("BtnClick");
+        int bonusCoins = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().GetCoins();
+        GameData.SetCoins(GameData.GetCoins() + bonusCoins);
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(true);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(true);
         gameObject.SetActive(false);

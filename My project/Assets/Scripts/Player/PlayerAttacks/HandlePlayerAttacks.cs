@@ -28,7 +28,7 @@ public class HandlePlayerAttacks : MonoBehaviour
             if(spellBook[i].TimeUntilCast < 0){
                 if(!IsEnemy()) return;
                 spellBook[i].SpawnSpell(transform.position);
-                spellBook[i].TimeUntilCast = spellBook[i].CastTime;
+                spellBook[i].TimeUntilCast = spellBook[i].CastTime * (1f - (GameData.GetPlayerCdReduction() / 100f));
             }
         }
     }

@@ -50,9 +50,14 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement, string spell){
-        health -= damage;
-        DamagePopup.Create(transform.position, damage, false, typeSpellElement);
-        player.GetComponent<DamageDone>().AddDamage(spell.Replace("(Clone)", ""), damage);
+        int critChange = GameData.GetPlayerCritChange();
+        int random = Random.Range(0, 100);
+        bool critHit = random < critChange ? true : false;
+        int finalDamage = (int) (damage * (1f + GameData.GetPlayerBonusDmg()/100f));
+        finalDamage = critHit ? finalDamage * 2 : finalDamage;
+        health -= finalDamage;
+        DamagePopup.Create(transform.position, finalDamage, critHit, typeSpellElement);
+        player.GetComponent<DamageDone>().AddDamage(spell.Replace("(Clone)", ""), finalDamage);
         if(health <= 0){
             Die();
         }

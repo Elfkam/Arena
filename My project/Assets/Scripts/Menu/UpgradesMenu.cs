@@ -8,8 +8,8 @@ public class UpgradesMenu : MonoBehaviour
 {
     private List<string> upgrades;
     [SerializeField] private GameObject tableContent;
-    private void Start()
-    {
+    [SerializeField] private TextMeshProUGUI text;
+    public void SetActive(){
         upgrades = new List<string>{
             {"playerCritChange"},
             {"playerBonusHp"},
@@ -21,14 +21,18 @@ public class UpgradesMenu : MonoBehaviour
         {
             AddRow(row);
         }
+        gameObject.SetActive(true);
+    }
+
+    private void Update()
+    {
+        text.text = GameData.GetCoins().ToString();
     }
 
     public void SelectUpgrade(){
-        if(GameData.GetCoins() <= 0) return;
         GameObject parent = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
 
         string IconName = "";
-        GameObject Text = new GameObject("");
 
         for (int i = 0; i < parent.transform.childCount; i++)
         {
@@ -38,98 +42,69 @@ public class UpgradesMenu : MonoBehaviour
                     IconName = child.GetComponent<Image>().sprite.name;
                     continue;
                 case "Text":
-                    Text = child;                    
+                    child.GetComponent<TextMeshProUGUI>().text = GetDescription(IconName, GameData.Get(IconName) + 1);                   
                     continue;
                 default:
                     continue;
             }
-        }
-        Text.GetComponent<TextMeshProUGUI>().text = GetDescription(IconName, Get(IconName) + 1); 
-        Set(IconName, Get(IconName) + 1);
+        }        
+        GameData.Set(IconName, GameData.Get(IconName) + 1);
         GameData.SetCoins(GameData.GetCoins() -1);
 
     }
 
     private void AddRow(string name){
-        GameObject row = new GameObject("");
         switch(name){
             case "playerCritChange":
-                row = UpgradeRow.Create(gameObject.transform.position, GameAssets.i.UpgradeRow, "playerCritChange", GameData.GetPlayerCritChange(), GetDescription("playerCritChange", GameData.GetPlayerCritChange())).gameObject;
+                UpgradeRow.Create(gameObject.transform.position, tableContent, GameAssets.i.UpgradeRow, "playerCritChange", GameData.GetPlayerCritChange(), GetDescription("playerCritChange", GameData.GetPlayerCritChange()));
                 break;
             case "playerBonusHp":
-                row = UpgradeRow.Create(gameObject.transform.position, GameAssets.i.UpgradeRow, "playerBonusHp", GameData.GetPlayerBonusHp(), GetDescription("playerBonusHp", GameData.GetPlayerBonusHp())).gameObject;
+                UpgradeRow.Create(gameObject.transform.position, tableContent, GameAssets.i.UpgradeRow, "playerBonusHp", GameData.GetPlayerBonusHp(), GetDescription("playerBonusHp", GameData.GetPlayerBonusHp()));
                 break;
             case "playerBonusDmg":
-                row = UpgradeRow.Create(gameObject.transform.position, GameAssets.i.UpgradeRow, "playerBonusDmg", GameData.GetPlayerBonusDmg(), GetDescription("playerBonusDmg", GameData.GetPlayerBonusDmg())).gameObject;
+                UpgradeRow.Create(gameObject.transform.position, tableContent, GameAssets.i.UpgradeRow, "playerBonusDmg", GameData.GetPlayerBonusDmg(), GetDescription("playerBonusDmg", GameData.GetPlayerBonusDmg()));
                 break;
             case "playerBonusSpeed":
-                row = UpgradeRow.Create(gameObject.transform.position, GameAssets.i.UpgradeRow, "playerBonusSpeed", GameData.GetPlayerBonusSpeed(), GetDescription("playerBonusSpeed", GameData.GetPlayerBonusSpeed())).gameObject;
+                UpgradeRow.Create(gameObject.transform.position, tableContent, GameAssets.i.UpgradeRow, "playerBonusSpeed", GameData.GetPlayerBonusSpeed(), GetDescription("playerBonusSpeed", GameData.GetPlayerBonusSpeed()));
                 break;
             case "playerCdReduction":
-                row = UpgradeRow.Create(gameObject.transform.position, GameAssets.i.UpgradeRow, "playerCdReduction", GameData.GetPlayerCdReduction(), GetDescription("playerCdReduction", GameData.GetPlayerCdReduction())).gameObject;
+                UpgradeRow.Create(gameObject.transform.position, tableContent, GameAssets.i.UpgradeRow, "playerCdReduction", GameData.GetPlayerCdReduction(), GetDescription("playerCdReduction", GameData.GetPlayerCdReduction()));
                 break;
             default:
                 break;
         }
-        row.transform.SetParent(tableContent.transform);
-        row.transform.localScale = new Vector3(1,1,0);
-        row.transform.localPosition = new Vector3(0,0,0);
     }
     
     private string GetDescription(string name, int value){
         switch(name){
             case "playerCritChange":                
-                return "<color=\"green\">" + value + " / 50</color>\n\nIncrease crit change of all spells";
+                return "<color=\"green\">" + value + " / " + GameData.GetMaxValue(name) + "</color>\n\nIncrease critical change of all spells";
             case "playerBonusHp":                
-                return "<color=\"green\">" + value + " / 50</color>\n\nIncrease player health";
+                return "<color=\"green\">" + value + " / " + GameData.GetMaxValue(name) + "</color>\n\nIncrease player health";
             case "playerBonusDmg":
-                return "<color=\"green\">" + value + " / 50</color>\n\nIncrease damage of all spells";
+                return "<color=\"green\">" + value + " / " + GameData.GetMaxValue(name) + "</color>\n\nIncrease damage of all spells";
             case "playerBonusSpeed":
-                return "<color=\"green\">" + value + " / 50</color>\n\nIncrease player movement speed";
+                return "<color=\"green\">" + value + " / " + GameData.GetMaxValue(name) + "</color>\n\nIncrease player movement speed";
             case "playerCdReduction":
-                return "<color=\"green\">" + value + " / 50</color>\n\nIncrease casting speed of all spells";
+                return "<color=\"green\">" + value + " / " + GameData.GetMaxValue(name) + "</color>\n\nIncrease casting speed of all spells";
             default:
                 return "";
         }
     }
 
-    private void Set(string name, int value){
-        switch(name){
-            case "playerCritChange":
-                GameData.SetPlayerCritChange(value);
-                break;
-            case "playerBonusHp":
-                GameData.SetPlayerBonusHp(value);
-                break;
-            case "playerBonusDmg":
-                GameData.SetPlayerBonusDmg(value);
-                break;
-            case "playerBonusSpeed":
-                GameData.SetPlayerBonusSpeed(value);
-                break;
-            case "playerCdReduction":
-                GameData.SetPlayerCdReduction(value);
-                break;
-            default:
-                break;
-        }
+    public void GetFreeCoins(){
+        // TODO: watch ad
+        GameData.SetCoins(GameData.GetCoins() + 5);
     }
 
-    private int Get(string name){
-        switch(name){
-            case "playerCritChange":
-                return GameData.GetPlayerCritChange();
-            case "playerBonusHp":
-                return GameData.GetPlayerBonusHp();
-            case "playerBonusDmg":
-                return GameData.GetPlayerBonusDmg();
-            case "playerBonusSpeed":
-                return GameData.GetPlayerBonusSpeed();
-            case "playerCdReduction":
-                return GameData.GetPlayerCdReduction();
-            default:
-                return 0;
+    public void ResetPoints(){
+        // TODO: watch ad
+        GameData.ResetPoints();
+        for (int i = 0; i < tableContent.transform.childCount; i++)
+        {
+            GameObject row = tableContent.transform.GetChild(i).gameObject;
+            string IconName = row.transform.GetChild(1).GetComponent<Image>().sprite.name;
+            row.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = GetDescription(IconName, 0);
         }
     }
-
 }

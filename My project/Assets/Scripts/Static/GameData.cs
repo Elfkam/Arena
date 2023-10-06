@@ -78,5 +78,70 @@ public static class GameData
     }
     public static int GetCoins(){
         return coins;
+    }    
+    public static void Set(string name, int value){
+        switch(name){
+            case "playerCritChange":
+                GameData.SetPlayerCritChange(value);
+                break;
+            case "playerBonusHp":
+                GameData.SetPlayerBonusHp(value);
+                break;
+            case "playerBonusDmg":
+                GameData.SetPlayerBonusDmg(value);
+                break;
+            case "playerBonusSpeed":
+                GameData.SetPlayerBonusSpeed(value);
+                break;
+            case "playerCdReduction":
+                GameData.SetPlayerCdReduction(value);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static int Get(string name){
+        switch(name){
+            case "playerCritChange":
+                return GameData.GetPlayerCritChange();
+            case "playerBonusHp":
+                return GameData.GetPlayerBonusHp();
+            case "playerBonusDmg":
+                return GameData.GetPlayerBonusDmg();
+            case "playerBonusSpeed":
+                return GameData.GetPlayerBonusSpeed();
+            case "playerCdReduction":
+                return GameData.GetPlayerCdReduction();
+            default:
+                return 0;
+        }
+    }
+
+    public static int GetMaxValue(string name){
+        switch(name){
+            case "playerCritChange":
+                return 50;
+            case "playerBonusHp":
+                return 100;
+            case "playerBonusDmg":
+                return 100;
+            case "playerBonusSpeed":
+                return 50;
+            case "playerCdReduction":
+                return 50;
+            default:
+                return 0;
+        }
+    }
+
+    public static void ResetPoints(){
+        int addCoins = GetPlayerBonusDmg() + GetPlayerBonusHp() + GetPlayerBonusSpeed() + GetPlayerCdReduction() + GetPlayerCritChange();
+        SetPlayerBonusDmg(0);
+        SetPlayerBonusHp(0);
+        SetPlayerBonusSpeed(0);
+        SetPlayerCdReduction(0);
+        SetPlayerCritChange(0);
+        SetCoins(GetCoins() + addCoins);
     }
 }

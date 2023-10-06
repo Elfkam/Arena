@@ -24,8 +24,14 @@ public class DamagePopup : MonoBehaviour
     }
 
     public void Setup(int damageAmount, bool isCriticalHit, PlayerAttacks.TypeSpellElement typeSpellElement){
-        textMesh.SetText(damageAmount.ToString());
-        textMesh.color = GetColor(typeSpellElement);
+        if(isCriticalHit){
+            textMesh.SetText(damageAmount.ToString());
+            textMesh.fontSize = 6f;
+            textMesh.color = Color.red;
+        }else{
+            textMesh.SetText(damageAmount.ToString());
+            textMesh.color = GetColor(typeSpellElement);
+        }
         timeUntilDisappearStart = 1f;
     }
 

@@ -34,16 +34,16 @@ public class EndMenu : MonoBehaviour
     private void SetUpHeader(bool playerWon, int bonusCoins){
         switch(GameData.GetDiffLevel()){
             case 1 :
-                HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED") + "\n\n<color=\"green\">- EASY -\n\n<color=yellow>+ "+bonusCoins+"COINS";
+                HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED") + "\n\n<color=\"green\">- EASY -\n\n<color=yellow>+ "+bonusCoins+" COINS";
                 return;
             case 2 :
-                HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED") + "\n\n<color=\"orange\">- MEDIUM -\n\n<color=yellow>+ "+bonusCoins+"COINS";
+                HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED") + "\n\n<color=\"orange\">- MEDIUM -\n\n<color=yellow>+ "+bonusCoins+" COINS";
                 return;
             case 3 :
-                 HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED")+ "\n\n<color=\"red\">- HARD -\n\n<color=yellow>+ "+bonusCoins+"COINS";
+                 HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED")+ "\n\n<color=\"red\">- HARD -\n\n<color=yellow>+ "+bonusCoins+" COINS";
                 return;
             case 4 :
-                 HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED")+ "\n\n<color=\"purple\">- IMPOSSIBLE -\n\n<color=yellow>+ "+bonusCoins+"COINS";
+                 HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED")+ "\n\n<color=\"purple\">- IMPOSSIBLE -\n\n<color=yellow>+ "+bonusCoins+" COINS";
                 return;
             default :
                 return;
