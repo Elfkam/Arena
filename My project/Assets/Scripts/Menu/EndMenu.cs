@@ -22,6 +22,7 @@ public class EndMenu : MonoBehaviour
         GameData.SetCoins(GameData.GetCoins() + bonusCoins);
         if(playerWon) GameData.SetDiffLevel(GameData.GetDiffLevel() + 1);
         gameObject.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<DamageDone>().GetTable().transform.parent.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 1); // works only if gameObject is active
         Time.timeScale = 0;      
     }
     public void MainMenu()

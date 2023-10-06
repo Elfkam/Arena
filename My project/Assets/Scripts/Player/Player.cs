@@ -11,13 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     private Rigidbody2D playerRigidBody2d;
     private bool isWalking;
-    private int MAX_HEALTH = 100 + GameData.GetPlayerBonusHp();
+    private int MAX_HEALTH = 100;
 
     private int Health;
     private int Coins;
 
     private void Awake() {
         playerRigidBody2d = GetComponent<Rigidbody2D>();
+        MAX_HEALTH += GameData.GetPlayerBonusHp();
         Health = MAX_HEALTH;
         healthBar.SetMaxHealth(Health);
         moveSpeed += GameData.GetPlayerBonusSpeed() / 100f;

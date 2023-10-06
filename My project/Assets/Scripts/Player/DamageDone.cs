@@ -54,4 +54,8 @@ public class DamageDone : MonoBehaviour
         spell = spell == "FireBallExplosion" ? "FireBall" : spell;
         dmgTable[spell] += damage;
     }
+
+    public GameObject GetTable(){
+        return table;
+    }
 }

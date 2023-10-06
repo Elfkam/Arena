@@ -21,7 +21,9 @@ public class UpgradesMenu : MonoBehaviour
         {
             AddRow(row);
         }
+        
         gameObject.SetActive(true);
+        tableContent.transform.parent.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 1); // works only if gameObject is active
     }
 
     private void Update()
