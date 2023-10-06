@@ -39,4 +39,5 @@ public class GameAssets : MonoBehaviour
     public GameObject Heart;
     public GameObject Row;
     public GameObject Coin;
+    public GameObject UpgradeRow;
 }

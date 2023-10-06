@@ -70,3 +70,4 @@ MonoBehaviour:
   Heart: {fileID: 6144203658188765464, guid: 9eaccb2f86962494d87b2a5c093cddcb, type: 3}
   Row: {fileID: 5937873127082841459, guid: 12037aab5bb984d4fa177d82438cf393, type: 3}
   Coin: {fileID: 3942793220021944189, guid: 1ec1db0f1655c6a4b8a185bea16ef9a2, type: 3}
+  UpgradeRow: {fileID: 5110888965065100648, guid: f256bf9a2eaeafb4d85642a62a9c8c28, type: 3}

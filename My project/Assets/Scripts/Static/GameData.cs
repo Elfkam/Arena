@@ -6,11 +6,11 @@ public static class GameData
 {
     static int diffLevel;
     static int coins;
-    static float playerCritChange;
+    static int playerCritChange;
     static int playerBonusHp;
     static int playerBonusDmg;
-    static float playerBonusSpeed;
-    static float playerCdReduction;
+    static int playerBonusSpeed;
+    static int playerCdReduction;
 
     // Static constructor is called at most one time, before any
     // instance constructor is invoked or member is accessed.
@@ -32,11 +32,11 @@ public static class GameData
         return diffLevel;
     }
 
-    public static void SetPlayerCritChange(float critChange){
-        PlayerPrefs.SetFloat("playerCritChange", critChange);
+    public static void SetPlayerCritChange(int critChange){
+        PlayerPrefs.SetInt("playerCritChange", critChange);
         playerCritChange = critChange;
     }
-    public static float GetPlayerCritChange(){
+    public static int GetPlayerCritChange(){
         return playerCritChange;
     }
 
@@ -56,24 +56,24 @@ public static class GameData
         return playerBonusDmg;
     }
 
-    public static void SetPlayerBonusSpeed(float bonusSpeed){
-        PlayerPrefs.SetFloat("playerBonusSpeed", bonusSpeed);
+    public static void SetPlayerBonusSpeed(int bonusSpeed){
+        PlayerPrefs.SetInt("playerBonusSpeed", bonusSpeed);
         playerBonusSpeed = bonusSpeed;
     }
-    public static float GetPlayerBonusSpeed(){
+    public static int GetPlayerBonusSpeed(){
         return playerBonusSpeed;
     }
     
-    public static void SetPlayerCdReduction(float cdReduction){
-        PlayerPrefs.SetFloat("playerCdReduction", cdReduction);
+    public static void SetPlayerCdReduction(int cdReduction){
+        PlayerPrefs.SetInt("playerCdReduction", cdReduction);
         playerCdReduction = cdReduction;
     }
-    public static float GetPlayerCdReduction(){
+    public static int GetPlayerCdReduction(){
         return playerCdReduction;
     }
 
     public static void SetCoins(int coinsArg){
-        PlayerPrefs.SetFloat("coins", coinsArg);
+        PlayerPrefs.SetInt("coins", coinsArg);
         coins = coinsArg;
     }
     public static int GetCoins(){
