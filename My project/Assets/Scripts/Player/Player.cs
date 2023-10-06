@@ -72,6 +72,10 @@ public class Player : MonoBehaviour
             if(Health > MAX_HEALTH) Health = MAX_HEALTH;
             healthBar.SetHealth(Health);
             Destroy(gm);
-        }     
+        }
+        if(gm.CompareTag("Coin")){        
+            GameData.SetCoins(GameData.GetCoins() + 1);
+            Destroy(gm);
+        }      
     }
 }

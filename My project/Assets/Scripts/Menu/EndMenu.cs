@@ -18,7 +18,7 @@ public class EndMenu : MonoBehaviour
             outline.effectColor = playerWon ? new Color(255, 241f/255f, 0) : new Color(255, 0, 0);
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<DamageDone>().AddRows();
-        PlayerPrefs.SetInt("DiffLevel", GameData.GetDiffLevel());
+        if(playerWon) GameData.SetDiffLevel(GameData.GetDiffLevel() + 1);
         gameObject.SetActive(true);
         Time.timeScale = 0;      
     }

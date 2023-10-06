@@ -14,7 +14,7 @@ public class DifficultyMenu : MonoBehaviour
 
     private void Awake()
     {
-        int diffLevel = PlayerPrefs.GetInt("DiffLevel");
+        int diffLevel = GameData.GetDiffLevel();
         Debug.Log(diffLevel);
         switch(diffLevel){
             case 0 :

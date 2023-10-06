@@ -38,4 +38,5 @@ public class GameAssets : MonoBehaviour
     public GameObject XP;
     public GameObject Heart;
     public GameObject Row;
+    public GameObject Coin;
 }
