@@ -773,7 +773,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -77.49903}
-  m_SizeDelta: {x: -180, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &79695113
 CanvasRenderer:
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU DIED
+  m_text: <color=red>YOU DIED\n\n<color="green">- EASY -
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -6869,7 +6869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1426769149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7214,6 +7214,7 @@ GameObject:
   - component: {fileID: 1501482734}
   - component: {fileID: 1501482736}
   - component: {fileID: 1501482735}
+  - component: {fileID: 1501482737}
   m_Layer: 5
   m_Name: CoinsCount
   m_TagString: Untagged
@@ -7338,6 +7339,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501482733}
   m_CullTransparentMesh: 1
+--- !u!114 &1501482737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501482733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0e4c7e21a62384eb233e782253cb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &1534408649
 GameObject:
   m_ObjectHideFlags: 0
@@ -8718,7 +8732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118.4, y: -50}
+  m_AnchoredPosition: {x: 118.399994, y: -50}
   m_SizeDelta: {x: 200.01, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1953246208

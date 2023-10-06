@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private int MAX_HEALTH = 100;
 
     private int Health;
+    private int Coins;
 
     private void Awake() {
         playerRigidBody2d = GetComponent<Rigidbody2D>();
@@ -73,9 +74,14 @@ public class Player : MonoBehaviour
             healthBar.SetHealth(Health);
             Destroy(gm);
         }
-        if(gm.CompareTag("Coin")){        
-            GameData.SetCoins(GameData.GetCoins() + 1);
+        if(gm.CompareTag("Coin")){
+            Coins ++;
+            GameObject.Find("GameHandler/UI/Coins/CoinsCount").GetComponent<CoinCount>().SetCoinText(Coins.ToString());                  
             Destroy(gm);
         }      
+    }
+
+    public int GetCoins(){
+        return Coins;
     }
 }
