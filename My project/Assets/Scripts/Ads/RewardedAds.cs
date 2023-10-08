@@ -1,13 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
- 
+using TMPro;
+
 public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] Button _showAdButton;
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
+    [SerializeField] AdTypeReward rewardType;
+
+    private enum AdTypeReward
+    {
+        Revive,
+        Coin
+    }
  
     private void Start()
     {   
@@ -60,7 +68,18 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
-            GameObject.Find("Canvas/UpgradesMenu").transform.GetComponent<UpgradesMenu>().GetFreeCoins();
+            if(rewardType == AdTypeReward.Coin){
+                GameObject.Find("Canvas/UpgradesMenu").transform.GetComponent<UpgradesMenu>().GetFreeCoins();
+                Color newColor = _showAdButton.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
+                newColor.a = 125.0f/255f;
+                _showAdButton.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = newColor;
+                newColor = _showAdButton.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+                newColor.a = 125.0f/255f;
+                _showAdButton.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().color = newColor;
+            } else if (rewardType == AdTypeReward.Revive){
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetMaxHealth();
+                GameObject.Find("GameHandler/UI/ReviveMenu").transform.GetComponent<ReviveMenu>().DisableReviveMenu();
+            }
         }
     }
  

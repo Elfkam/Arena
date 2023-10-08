@@ -98,16 +98,16 @@ public class EnemySpawner : MonoBehaviour
     }
 
     private void SpawnUndeadSkeleton(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 5 * EnemyHealthBonus, 2f, 0.8f, 2); // attackSpeed is based on animations
+        BasicEnemy.Create(pos, GameAssets.i.UndeadSkeleton, 5 * EnemyHealthBonus, 2f, 0.8f + 0.25f * (GameData.GetDiffLevel() - 1), 2 * GameData.GetDiffLevel()); // attackSpeed is based on animations
     } 
     private void SpawnUndeadZombie(Vector3 pos){
-        BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 10 * EnemyHealthBonus, 1.75f, 0.8f, 3);
+        BasicEnemy.Create(pos, GameAssets.i.UndeadZombie, 10 * EnemyHealthBonus, 1.75f, 0.8f + 0.25f * (GameData.GetDiffLevel() - 1), 3 * GameData.GetDiffLevel());
     }
     private void SpawnUndeadVampire(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 10 * EnemyHealthBonus, 1.6f, 0.9f, 3, 3f);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadVampire, 10 * EnemyHealthBonus, 1.6f, 0.9f + 0.25f * (GameData.GetDiffLevel() - 1), 3 * GameData.GetDiffLevel(), 3f);
     } 
     private void SpawnUndeadBlackKnight(Vector3 pos){
-        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30 * EnemyHealthBonus, 3f, 1f, 5, 3f);
+        ChargeEnemy.Create(pos, GameAssets.i.UndeadBlackKnight, 30 * EnemyHealthBonus, 3f, 1f + 0.25f * (GameData.GetDiffLevel() - 1), 5 * GameData.GetDiffLevel(), 3f);
     } 
     private void SpawnUndeadGhost(Vector3 pos){
         CasterEnemy.Create(pos, GameAssets.i.UndeadGhost, 10 * EnemyHealthBonus, 1.75f, 2f, 5, 3f);

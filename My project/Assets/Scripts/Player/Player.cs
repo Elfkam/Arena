@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    [SerializeField] private ReviveMenu reviveMenu;    
     [SerializeField] private EndMenu endMenu;
     [SerializeField] private Joystick joystick;
     [SerializeField] private float moveSpeed;
     [SerializeField] private HealthBar healthBar;
     private Rigidbody2D playerRigidBody2d;
+    private bool playerRevived = false;
     private bool isWalking;
     private int MAX_HEALTH = 100;
 
@@ -60,7 +62,11 @@ public class Player : MonoBehaviour
         healthBar.SetHealth(Health);
         gameObject.GetComponent<DamageEffect>().ShowDamageEffect();
         if(Health <= 0){
-            endMenu.SetActiveEndMenu(false);
+            if(!playerRevived){
+                playerRevived = true;
+                reviveMenu.SetActiveReviveMenu();
+            }
+            else endMenu.SetActiveEndMenu(false);
         }
     }
 
@@ -85,5 +91,9 @@ public class Player : MonoBehaviour
 
     public int GetCoins(){
         return Coins;
+    }
+
+    public void SetMaxHealth(){
+        Health = MAX_HEALTH;
     }
 }
