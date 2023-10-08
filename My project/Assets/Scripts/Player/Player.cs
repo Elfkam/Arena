@@ -80,11 +80,13 @@ public class Player : MonoBehaviour
             Health += 50;
             if(Health > MAX_HEALTH) Health = MAX_HEALTH;
             healthBar.SetHealth(Health);
+            FindAnyObjectByType<AudioManager>().Play("Heal");
             Destroy(gm);
         }
         if(gm.CompareTag("Coin")){
             Coins ++;
-            GameObject.Find("GameHandler/UI/Coins/CoinsCount").GetComponent<CoinCount>().SetCoinText(Coins.ToString());                  
+            GameObject.Find("GameHandler/UI/Coins/CoinsCount").GetComponent<CoinCount>().SetCoinText(Coins.ToString()); 
+            FindAnyObjectByType<AudioManager>().Play("Coin");                 
             Destroy(gm);
         }      
     }
