@@ -9570,6 +9570,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1260428463144233843, guid: fdddd7ebe291162499b8422e3e04f0db, type: 3}
+      propertyPath: _testMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1688856998171032084, guid: fdddd7ebe291162499b8422e3e04f0db, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -9931,7 +9935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2075057539
 SpriteRenderer:
   m_ObjectHideFlags: 0

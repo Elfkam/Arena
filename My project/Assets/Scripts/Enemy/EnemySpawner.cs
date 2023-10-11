@@ -92,6 +92,10 @@ public class EnemySpawner : MonoBehaviour
     private void IncreaseHealthBonus(){
         timeUntilHealthIncrease += Time.deltaTime;    
         if(timeUntilHealthIncrease > 60 / GameData.GetDiffLevel()){
+            Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+            playerPos.x += Random.Range(-2f, 2f);
+            playerPos.y += Random.Range(-2f, 2f);
+            Instantiate(GameAssets.i.Coin, playerPos, Quaternion.identity);
             timeUntilHealthIncrease = 0;
             EnemyHealthBonus += 1;
         }        
