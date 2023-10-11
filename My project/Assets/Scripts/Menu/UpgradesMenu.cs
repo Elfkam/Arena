@@ -17,11 +17,12 @@ public class UpgradesMenu : MonoBehaviour
             {"playerBonusSpeed"},
             {"playerCdReduction"},
         };
-        foreach (string row in upgrades)
-        {
-            AddRow(row);
+        if(tableContent.transform.childCount == 0){
+            foreach (string row in upgrades)
+            {
+                AddRow(row);
+            }
         }
-        
         gameObject.SetActive(true);
         tableContent.transform.parent.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 1); // works only if gameObject is active
     }
