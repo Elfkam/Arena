@@ -58,7 +58,7 @@ public class PlayerXP : MonoBehaviour
     private void LevelUp(){
         xpBar.SetMaxXP(XPForLevel);
         FindAnyObjectByType<AudioManager>().Play("LevelUp");
-        levelUpMenu.LevelUpSetup();
+        levelUpMenu.LevelUpSetup("Level Up!");
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);
         GameObject.Find("GameHandler/UI/PauseButton").SetActive(false);

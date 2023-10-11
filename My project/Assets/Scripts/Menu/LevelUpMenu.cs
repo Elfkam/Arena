@@ -18,11 +18,11 @@ public class LevelUpMenu : MonoBehaviour
         }
         SetButtons(spellsToButtons);
     }
-    public void LevelUpSetup(){
+    public void LevelUpSetup(string headerText){
         List<string> spells = GameObject.FindGameObjectWithTag("Player").GetComponent<Spells>().GetAvailableSpells();
         List<string> spellsToButtons = new List<string>();
 
-        GameObject.Find("GameHandler/UI/LevelUpMenu/Header/Description").GetComponent<TextMeshProUGUI>().SetText("Level Up!");
+        GameObject.Find("GameHandler/UI/LevelUpMenu/Header/Description").GetComponent<TextMeshProUGUI>().SetText(headerText);
         List<int> indexes = GetRandomNumber(0, spells.Count, 3);
         // Get 3 random spells
         for (int i = 0; i < indexes.Count; i++)
@@ -83,7 +83,8 @@ public class LevelUpMenu : MonoBehaviour
     public void Reroll()
     {
         FindAnyObjectByType<AudioManager>().Play("BtnClick");
-        LevelUpSetup();
+        string text = GameObject.Find("GameHandler/UI/LevelUpMenu/Header/Description").GetComponent<TextMeshProUGUI>().text;
+        LevelUpSetup(text);
         GameObject.Find("GameHandler/UI/LevelUpMenu/Row4/Button/Description").GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 60f/255f);
     }
 
