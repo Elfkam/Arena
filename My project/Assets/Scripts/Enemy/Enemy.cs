@@ -31,14 +31,14 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
-        
+        CheckDespawn();
     }
 
     protected void MoveToPlayer(){
         Vector2 directionToPlayer = (player.transform.position - transform.position).normalized;
         Vector3 moveDir = getMoveDirection();
 
-        // turn player acording to witch side he is going
+        // turn enemy acording to which side he is going
         if(directionToPlayer != Vector2.zero){    
             if(directionToPlayer.x > 0){
                 transform.eulerAngles = new Vector2(0, 0);
@@ -47,6 +47,13 @@ public abstract class Enemy : MonoBehaviour
             }
         }
         transform.position += moveDir * getMoveSpeed() * Time.deltaTime;
+    }
+
+    private void CheckDespawn(){
+        float distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
+        if(distance > 50f){
+            Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(int damage, PlayerAttacks.TypeSpellElement typeSpellElement, string spell){

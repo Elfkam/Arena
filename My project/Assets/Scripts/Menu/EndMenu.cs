@@ -20,7 +20,11 @@ public class EndMenu : MonoBehaviour
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<DamageDone>().AddRows();
         GameData.SetCoins(GameData.GetCoins() + bonusCoins);
-        if(playerWon) GameData.SetDiffLevel(GameData.GetDiffLevel() + 1);
+        if(playerWon) {
+            if(GameData.GetCurrDiffLevel() >= GameData.GetMaxDiffLevel()){
+                GameData.SetMaxDiffLevel(GameData.GetMaxDiffLevel() + 1);
+            }            
+        }
         gameObject.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<DamageDone>().GetTable().transform.parent.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 1); // works only if gameObject is active
         Time.timeScale = 0;      
@@ -33,7 +37,7 @@ public class EndMenu : MonoBehaviour
     }
 
     private void SetUpHeader(bool playerWon, int bonusCoins){
-        switch(GameData.GetDiffLevel()){
+        switch(GameData.GetCurrDiffLevel()){
             case 1 :
                 HeaderDesc.GetComponent<TextMeshProUGUI>().text = (playerWon ? "<color=yellow>YOU WIN!" : "<color=red>YOU DIED") + "\n\n<color=\"green\">- EASY -\n\n<color=yellow>+ "+bonusCoins+" COINS";
                 return;

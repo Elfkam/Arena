@@ -4,7 +4,8 @@ using UnityEngine;
 
 public static class GameData
 {
-    static int diffLevel;
+    static int currDiffLevel;
+    static int maxDiffLevel; // max diff player can play (based on progress)
     static int coins;
     static int playerCritChange;
     static int playerBonusHp;
@@ -15,7 +16,8 @@ public static class GameData
     // Static constructor is called at most one time, before any
     // instance constructor is invoked or member is accessed.
     static GameData(){
-        diffLevel = PlayerPrefs.GetInt("diffLevel", 1);
+        maxDiffLevel = PlayerPrefs.GetInt("maxDiffLevel", 1);
+        currDiffLevel = PlayerPrefs.GetInt("currDiffLevel", 1);
         playerCritChange = PlayerPrefs.GetInt("playerCritChange", 0);
         playerBonusHp = PlayerPrefs.GetInt("playerBonusHp", 0);
         playerBonusDmg = PlayerPrefs.GetInt("playerBonusDmg", 0);
@@ -24,12 +26,21 @@ public static class GameData
         coins = PlayerPrefs.GetInt("coins", 0);
     }
 
-    public static void SetDiffLevel(int level){
-        PlayerPrefs.SetInt("diffLevel", level);
-        diffLevel = level;
+    public static void SetMaxDiffLevel(int level){
+        PlayerPrefs.SetInt("maxDiffLevel", level);
+        maxDiffLevel = level;
     }
-    public static int GetDiffLevel(){
-        return diffLevel;
+    public static int GetMaxDiffLevel(){
+        return maxDiffLevel;
+    }
+
+
+    public static void SetCurrDiffLevel(int level){
+        PlayerPrefs.SetInt("currDiffLevel", level);
+        currDiffLevel = level;
+    }
+    public static int GetCurrDiffLevel(){
+        return currDiffLevel;
     }
 
     public static void SetPlayerCritChange(int critChange){

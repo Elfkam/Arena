@@ -97,5 +97,6 @@ public class Player : MonoBehaviour
 
     public void SetMaxHealth(){
         Health = MAX_HEALTH;
+        healthBar.SetHealth(Health);
     }
 }

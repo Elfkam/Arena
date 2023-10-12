@@ -13,7 +13,7 @@ public class DifficultyMenu : MonoBehaviour
     [SerializeField] private Button impossible;
 
     public void SetActive(){
-        int diffLevel = GameData.GetDiffLevel();
+        int diffLevel = GameData.GetMaxDiffLevel();
         switch(diffLevel){
             case 1 :
                 // unlock only easy diff
@@ -44,10 +44,10 @@ public class DifficultyMenu : MonoBehaviour
                 impossible.interactable = true;
                 break;
             default:
-                easy.interactable = true;                
-                DisableButton(medium);
-                DisableButton(hard);
-                DisableButton(impossible);
+                easy.interactable = true;
+                hard.interactable = true;
+                medium.interactable = true;
+                impossible.interactable = true;
                 break;
         }
         gameObject.SetActive(true);
@@ -62,7 +62,7 @@ public class DifficultyMenu : MonoBehaviour
 
     public void PlayGame(int diffLevel)
     {
-        GameData.SetDiffLevel(diffLevel);        
+        GameData.SetCurrDiffLevel(diffLevel);        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

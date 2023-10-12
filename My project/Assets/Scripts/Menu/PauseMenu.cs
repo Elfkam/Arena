@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
 
     private void SetUpHeader(){
         GameObject gm = GameObject.Find("GameHandler/UI/PauseMenu/Header/Description");
-        switch(GameData.GetDiffLevel()){
+        switch(GameData.GetCurrDiffLevel()){
             case 1 :
                 gm.GetComponent<TextMeshProUGUI>().text = "PAUSED\n\n<color=\"green\">- EASY -";
                 return;
