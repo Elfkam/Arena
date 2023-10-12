@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8880209898705300772}
   - component: {fileID: 8012617004756646312}
   - component: {fileID: 3928838691517150998}
+  - component: {fileID: 4947609702667078200}
   m_Layer: 0
   m_Name: HPHeart
   m_TagString: HPHeart
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.575
+--- !u!114 &4947609702667078200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144203658188765464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9b6ce12f262714e9f6c0dad4e44b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
