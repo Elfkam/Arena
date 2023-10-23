@@ -2575,9 +2575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb841823c335ac459c19a14bbf599a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _androidAdUnitId: Interstitial_Android
-  _iOsAdUnitId: Interstitial_iOS
-  _adUnitId: 
 --- !u!1 &955053310
 GameObject:
   m_ObjectHideFlags: 0

@@ -835,7 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1786d1cb6ac1bd47939ff60bf3f4c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reviveMenu: {fileID: 0}
   endMenu: {fileID: 0}
   joystick: {fileID: 0}
   moveSpeed: 0

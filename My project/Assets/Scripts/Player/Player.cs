@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     private Rigidbody2D playerRigidBody2d;
     private bool isWalking;
-    private int MAX_HEALTH = 1;
+    private int MAX_HEALTH = 100;
 
     private int Health;
     private int Coins;
