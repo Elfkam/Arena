@@ -96,12 +96,10 @@ public class UpgradesMenu : MonoBehaviour
     }
 
     public void GetFreeCoins(){
-        // TODO: watch ad
         GameData.SetCoins(GameData.GetCoins() + 5);
     }
 
     public void ResetPoints(){
-        // TODO: watch ad
         GameData.ResetPoints();
         for (int i = 0; i < tableContent.transform.childCount; i++)
         {

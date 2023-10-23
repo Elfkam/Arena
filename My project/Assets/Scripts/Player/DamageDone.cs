@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +35,7 @@ public class DamageDone : MonoBehaviour
                         row.transform.GetChild(j).GetComponent<Image>().sprite = Resources.Load<Sprite>("Icons/" + tableRow.Key);
                         break;
                     case "Spell":
-                        row.transform.GetChild(j).GetComponent<TextMeshProUGUI>().text = tableRow.Key;
+                        row.transform.GetChild(j).GetComponent<TextMeshProUGUI>().text = GetName(tableRow.Key);
                         break;
                     case "DmgDone":
                         row.transform.GetChild(j).GetComponent<TextMeshProUGUI>().text = tableRow.Value.ToString();
@@ -57,5 +58,19 @@ public class DamageDone : MonoBehaviour
 
     public GameObject GetTable(){
         return table;
+    }
+
+    // add space into spellName
+    private string GetName(string spellName){
+        if(spellName == "FireBall") return "Fire ball";
+        if(spellName == "FrostBall") return "Frost ball";
+
+        Regex pattern = new Regex(@"(?<=[a-z])(?=[A-Z])");
+        string[] parts = pattern.Split(spellName);
+        if (parts.Length > 1)
+        {
+            parts[1] = " " + parts[1];
+        }
+        return string.Join("", parts);
     }
 }

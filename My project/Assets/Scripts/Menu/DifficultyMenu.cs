@@ -58,6 +58,7 @@ public class DifficultyMenu : MonoBehaviour
         Color newColor = btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color;
         newColor.a = 125.0f/255f;
         btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = newColor;
+        btn.gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
 
     public void PlayGame(int diffLevel)
