@@ -9,6 +9,7 @@ public class EndMenu : MonoBehaviour
 {
     [SerializeField] private GameObject HeaderDesc;
     public void SetActiveEndMenu(bool playerWon){
+        Time.timeScale = 0;    
         GameObject.Find("GameHandler/UI/Floating Joystick").SetActive(false);
         GameObject.Find("GameHandler/UI/Health Bar").SetActive(false);
         GameObject.Find("GameHandler/UI/PauseButton").SetActive(false);
@@ -27,7 +28,6 @@ public class EndMenu : MonoBehaviour
         }
         gameObject.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<DamageDone>().GetTable().transform.parent.GetComponent<ScrollRect>().normalizedPosition = new Vector2(0, 1); // works only if gameObject is active
-        Time.timeScale = 0;      
     }
     public void MainMenu()
     {

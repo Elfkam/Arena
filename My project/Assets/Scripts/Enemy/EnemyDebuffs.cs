@@ -12,6 +12,7 @@ public class EnemyDebuffs : MonoBehaviour
     private Coroutine fireDot;
     private Vector3 moveDirection;
     private float windDuration;
+    private SpriteRenderer[] enemyBody;
     private void Start()
     {
         speedReduction = 0;
@@ -25,6 +26,7 @@ public class EnemyDebuffs : MonoBehaviour
             {PlayerAttacks.TypeSpellElement.Wind, 0f},
             {PlayerAttacks.TypeSpellElement.Lightning, 0f},
         };
+        enemyBody = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void Update()
@@ -56,8 +58,7 @@ public class EnemyDebuffs : MonoBehaviour
             default:
                 break;
         }
-        SpriteRenderer [] arr = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer spriteRenderer in arr)
+        foreach (SpriteRenderer spriteRenderer in enemyBody)
         {
             spriteRenderer.material.color = color;
         }
