@@ -84,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void IncreaseSpawnCount(){       
         timeUntilSpawnCountIncrease += Time.deltaTime;
-        if(timeUntilSpawnCountIncrease > 30){
+        if(timeUntilSpawnCountIncrease > 60 * ( 1.25 - GameData.GetCurrDiffLevel() / 4)){ // TODO: make constant for max lv
             timeUntilSpawnCountIncrease = 0;
             spawnCount += 5;
         }        
